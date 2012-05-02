@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>The Omega Grid System | Responsive Example</title>
+
+  <!-- Stylesheets -->
+	<link rel="stylesheet" href="demo/css/normalize.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="demo/css/demo.css" type="text/css" media="screen" />
+	
+	
+	<!-- Meta helpers -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+  <meta content="width" name="MobileOptimized">
+  <meta content="true" name="HandheldFriendly">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta http-equiv="cleartype" content ="on">
+  <meta http-equiv="X-UA-Compatible" content ="IE =edge, chrome =1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="demo/bootstrap/js/bootstrap-dropdown.js"></script>
+	<!--[if lt IE 9]>
+	  <script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	  <script type="text/javascript" src="respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+	
+	<!-- Header (something outside the "grid", therefore obviously full width with no restrictions. -->
+	<header id="top">
+		<div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+    
+          <a class="brand" href="./">Omega.gs Demo</a>
+          <div class="nav-collapse">
+    				<ul class="nav">
+    				  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> Layouts</a>
+    				    <ul class="dropdown-menu">
+    				      <li><a href="./samples/responsive">Responsive</a></li>
+    				      <li><a href="./samples/fixed">Fixed Width Grid (960px)</a></li>
+    				      <li><a href="./samples/fluid">Fluid Width Grid</a></li>
+    				      <li><a href="./samples/pushpull">Push & Pull</a></li>
+    				      <li><a href="./samples/prefixsuffix">Prefix & Suffix</a></li>
+    				    </ul>
+    				  </li>
+    				</ul>
+    				<ul class="nav pull-right">
+    				  <li><a href="https://github.com/ThemeGeeks/omega.gs">Omega.gs on GitHub</a></li>
+    				</ul>
+    			</div>
+        </div>
+      </div>
+    </div>
+	</header>
+  
+  
+    	<section id="demo">
+          <ul>
+            <li><h3><a href="samples/responsive">Responsive</a></h3></li>
+            <li><h3><a href="samples/fixed">Fixed Grid</a></h3></li>
+            <li><h3><a href="samples/fluid">Fluid Grid</a></h3></li>
+            <li><h3><a href="samples/pushpull">Push & Pull</a></h3></li>
+            <li><h3><a href="samples/prefixsuffix">Prefix & Suffix</a></h3></li>
+          </ul>
+    	</section>
+</body>
+</html>

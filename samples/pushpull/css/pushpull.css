@@ -1,0 +1,117 @@
+/*
+   * SAMPLE GRID SIZES ###########################
+   * Use these, or your own calculations for a fixed width grid.
+   * 1200px Grid =========
+   *   @cwidth: 80; @gutter: 20; @cols: 12; 
+   *   @cwidth: 55; @gutter: 20; @cols: 16;
+   *
+   * 960px Grid =========
+   *   @cwidth: 60; @gutter: 20; @cols: 12; 
+   *   @cwidth: 40; @gutter: 20; @cols: 16;
+   */
+/*
+   * DEBUG ################################################
+   * 
+   * (@cwidth*@cols) + (@gutter*@cols) * 1px; // grid width
+   * (60 * 12) + (20 * 12) * 1px = 720 + 240 * 1px = 960px
+   * 
+   * END DEBUG ############################################
+   */
+body {
+  width: 100%;
+  min-width: 960px;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+/* 
+ * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
+ * However, it was never used (even in original version) to do anything. ???
+ * 
+ * Something should be solved here to allow "overwriting" of the columns for a row.
+ */
+/* Content First push/pull effects */
+/* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
+#main {
+  *zoom: 1;
+}
+#main:before,
+#main:after {
+  content: "";
+  display: table;
+}
+#main:after {
+  clear: both;
+}
+#main #content-wrapper,
+#main #postscript-wrapper {
+  display: block;
+  margin: 0 auto;
+  width: 960px;
+  *zoom: 1;
+  margin-bottom: 1em;
+}
+#main #content-wrapper:before,
+#main #postscript-wrapper:before,
+#main #content-wrapper:after,
+#main #postscript-wrapper:after {
+  content: "";
+  display: table;
+}
+#main #content-wrapper:after,
+#main #postscript-wrapper:after {
+  clear: both;
+}
+#main #content {
+  display: block;
+  position: relative;
+  float: left;
+  width: 460px;
+  margin: 0 10px;
+  left: 480px;
+}
+#main #sidebar_first {
+  display: block;
+  position: relative;
+  float: left;
+  width: 220px;
+  margin: 0 10px;
+  right: 480px;
+}
+#main #sidebar_second {
+  display: block;
+  position: relative;
+  float: left;
+  width: 220px;
+  margin: 0 10px;
+  right: 480px;
+}
+#main #postscript_first {
+  display: block;
+  position: relative;
+  float: left;
+  width: 300px;
+  margin: 0 10px;
+  left: 640px;
+}
+#main #postscript_second {
+  display: block;
+  position: relative;
+  float: left;
+  width: 300px;
+  margin: 0 10px;
+}
+#main #postscript_third {
+  display: block;
+  position: relative;
+  float: left;
+  width: 300px;
+  margin: 0 10px;
+  right: 640px;
+}

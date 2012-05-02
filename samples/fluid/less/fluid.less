@@ -1,0 +1,40 @@
+@import '../../../style/less/omega-gs.less';
+ 
+@twidth: 100%;
+
+// Main mobile-first layout
+#main {
+  min-width: 720px;
+  .clearfix;
+  
+  #content-wrapper,
+  #postscript-wrapper {
+    .row(12);
+    //.clearfix;
+    margin-bottom: 1em;
+  }
+  
+  #content {
+	  .column(6);
+  }
+
+  #sidebar_first {
+  	.column(3);
+  }
+
+  #sidebar_second {
+  	.column(3);
+  }
+  
+  #postscript_first {
+    .column(4);
+  }
+  
+  #postscript_second {
+    .column(4);
+  }
+  
+  #postscript_third {
+    .column(4);
+  }
+}

@@ -1,0 +1,90 @@
+
+// Defaults which you can freely override
+@colwidth: 60;
+@gutter: 20;
+@columns: 12;
+
+// Utility variable — you should never need to modify these
+@gridwidth: (@colwidth*@columns) + (@gutter*@columns) * 1px;
+
+// Set @totalwidth to 100% for a fluid layout
+@totalwidth: @gridwidth;
+
+@single-column: @totalwidth*(((@gutter+@colwidth)-@gutter) / @gridwidth);
+@push-pull: (@gutter+@colwidth) / @gridwidth;
+// Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+@min-width: 960;
+@correction: 0.5 / @min-width * 100 * 1%;
+
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+.clearfix() {
+	*zoom:1;
+	
+	&:before,
+	&:after {
+	    content:"";
+	    display:table;
+	}
+	&:after {
+	    clear:both;
+	}
+}
+
+
+//////////
+// GRID //
+//////////
+
+body {
+	width: 100%;
+	max-width: 100%;
+	.clearfix;
+}
+
+.row(@columns:@columns) {
+	display: block;
+	
+	/* Standard width & margin */
+	width: @totalwidth*((@gutter + @gridwidth)/@gridwidth);
+	margin: 0 @totalwidth*(((@gutter*.5)/@gridwidth)*-1);	
+	
+	/* IE Fix for width & margin (http://tylertate.com/blog/2012/01/05/subpixel-rounding.html) */
+	//*width: @totalwidth*((@gutter + @gridwidth)/@gridwidth)-@correction;
+	//*margin: 0 auto;
+	
+	.clearfix;
+}
+
+.column(@x,@columns:@columns) {
+	display: block;
+	position: relative;
+	float: left;
+	
+	/* Standard width & margin */
+	width: @totalwidth*((((@gutter+@colwidth)*@x)-@gutter) / @gridwidth);
+	margin: 0 @totalwidth*((@gutter*.5)/@gridwidth);	
+	
+	/* IE Fix for width & margin (http://tylertate.com/blog/2012/01/05/subpixel-rounding.html) */
+	//*width: @totalwidth*((((@gutter+@colwidth)*@x)-@gutter) / @gridwidth)-@correction;
+	//*margin: 0 @totalwidth*((@gutter*.5)/@gridwidth)-@correction;
+}
+
+/* Content First push/pull effects */
+.push(@offset:1) {
+	//left: @totalwidth*(((@gutter+@colwidth)*@offset) / @gridwidth);
+	left: @totalwidth*(@push-pull*@offset);
+}
+
+.pull(@offset:1) {
+	right: @totalwidth*(@push-pull*@offset);
+}
+
+/* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
+.prefix(@offset:1) {
+  padding-right: @totalwidth*((@gutter*1)/@gridwidth) + (@single-column * @offset);
+}
+
+.suffix(@offset:1) {
+  padding-right: @totalwidth*((@gutter*1)/@gridwidth) + (@single-column * @offset);
+}
