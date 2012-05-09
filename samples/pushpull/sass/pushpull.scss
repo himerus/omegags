@@ -1,0 +1,42 @@
+@import '../../../style/scss/omega-gs.scss';
+
+// using Grid defaults
+
+#main {
+  @include clearfix();
+  
+  #content-wrapper,
+  #postscript-wrapper {
+    @include row(12);
+    margin-bottom: 1em;
+  }
+  
+  #content {
+	  @include column(6);
+	  @include push(6);
+  }
+
+  #sidebar_first {
+  	@include column(3);
+  	@include pull(6);
+  }
+
+  #sidebar_second {
+  	@include column(3);
+  	@include pull(6);
+  }
+  
+  #postscript_first {
+    @include column(4);
+    @include push(8);
+  }
+  
+  #postscript_second {
+    @include column(4);
+  }
+  
+  #postscript_third {
+    @include column(4);
+    @include pull(8);
+  }
+}

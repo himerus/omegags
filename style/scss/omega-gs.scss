@@ -1,0 +1,90 @@
+  /*
+   * SAMPLE GRID SIZES ###########################
+   * Use these, or your own calculations for a fixed width grid.
+   * 1200px Grid =========
+   *   $cwidth: 80; $gutter: 20; $cols: 12; 
+   *   $cwidth: 55; $gutter: 20; $cols: 16;
+   *
+   * 960px Grid =========
+   *   $cwidth: 60; $gutter: 20; $cols: 12; 
+   *   $cwidth: 40; $gutter: 20; $cols: 16;
+   */
+
+
+// Default grid sizing (960px)
+$cwidth:        60px;    // column width
+$gutter:        20px;    // gutter width 
+$cols:          12;    // total # of cols
+
+// Utility Width Variable — you should never need to modify these
+@function gwidth($cols:$cols) {
+	@return ($cwidth * $cols) + ($gutter * $cols); // grid width
+}
+
+// Set $twidth to 100% for a fluid layout
+$twidth: gwidth($cols); // total width
+
+// The micro clearfix 
+// http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+	*zoom:1;
+	
+	&:before,
+	&:after {
+	    content:"";
+	    display:table;
+	}
+	&:after {
+	    clear:both;
+	}
+}
+
+body {
+  width: 100%;
+  // The min-width is needed so items outside the grid stay the correct width if horizontal scroll 
+  // is active so they don't scale to the browser while grid items overflow
+  // (at least in a fixed layout) ????
+  min-width: $twidth;
+  //min-width: 100%;
+	@include clearfix();
+}
+
+/* 
+ * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
+ * However, it was never used (even in original version) to do anything. ???
+ * 
+ * Something should be solved here to allow "overwriting" of the columns for a row.
+ */
+
+@mixin row($cols:$cols) {
+	display: block;
+	margin: 0 auto;
+	width: $twidth;
+	@include clearfix();
+}
+
+@mixin column($x,$cols:$cols) {
+	display: block;
+	position: relative;
+	float: left;
+	width: $twidth * ((($gutter + $cwidth) * $x) - $gutter) / gwidth($cols);
+	margin: 0 ($twidth * ($gutter / 2) / gwidth($cols));
+}
+
+/* Content First push/pull effects */
+@mixin push($x:1) {
+	left: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+}
+
+@mixin pull($x:1) {
+	right: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+}
+
+/* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
+@mixin prefix($x:1) {
+  margin-left: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+}
+
+@mixin suffix($x:1) {
+  margin-right: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+}

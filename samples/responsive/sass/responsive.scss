@@ -1,0 +1,141 @@
+@import '../../../style/scss/omega-gs.scss';
+
+// Remove the definition below for a pixel-based layout
+$twidth: 100%;
+
+// Main mobile-first layout
+#main {
+  @include clearfix();
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  #content-wrapper,
+  #postscript-wrapper {
+    @include row(12);
+    margin-bottom: 1em;
+  }
+  
+  #content,
+  #sidebar_first,
+  #sidebar_second,
+  #postscript_first {
+  	@include column(12);
+  	margin-bottom: 1em;
+  }
+  
+  #content {
+    @include column(12);
+    margin-bottom: 1em;
+  }
+  #postscript_second,
+  #postscript_third {
+    @include column(6);
+  }
+}
+
+
+// landscape mobile
+@media screen and (min-width: 480px) and (max-width: 719px) {
+
+  #main {	
+  	#content {
+  	  @include column(12);
+  	  margin-bottom: 1em;
+    }
+    #sidebar_first {
+    	@include column(6);
+    	@include push(6);
+    }
+    #sidebar_second {
+    	@include column(6);
+    	@include pull(6);
+    }
+  }
+}
+
+// portrait tablet/small screen
+@media screen and (min-width: 720px) and (max-width: 959px) {
+
+  #main {	
+  	#content {
+  	  @include column(9);
+  	  margin-bottom: 1em;
+    }
+    #sidebar_first {
+    	@include column(3);
+    }
+    #sidebar_second {
+    	@include column(12);
+    }
+    #postscript_first,
+    #postscript_second,
+    #postscript_third {
+      @include column(4);
+    }
+  }
+}
+
+// larger screen
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+  
+  #main {	
+  	#content {
+  	  @include column(6);
+  	  @include push(6);
+    }
+
+    #sidebar_first {
+    	@include column(3);
+    	@include pull(6);
+    }
+
+    #sidebar_second {
+    	@include column(3);
+    	@include pull(6);
+    }
+    
+    #postscript_first {
+      @include column(6);
+    }
+    
+    #postscript_second {
+      @include column(3);
+    }
+    
+    #postscript_third {
+      @include column(3);
+    }
+  }
+}
+
+// larger screen
+@media screen and (min-width: 1200px) {
+  
+  #main {	
+  	#content {
+  	  @include column(6);
+  	  @include push(3);
+    }
+
+    #sidebar_first {
+    	@include column(3);
+    	@include pull(6);
+    }
+
+    #sidebar_second {
+    	@include column(3);
+    }
+    
+    #postscript_first {
+      @include column(4);
+    }
+    
+    #postscript_second {
+      @include column(4);
+    }
+    
+    #postscript_third {
+      @include column(4);
+    }
+  }
+}

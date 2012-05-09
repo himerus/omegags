@@ -16,20 +16,9 @@
 @gutter:        20;    // gutter width 
 @cols:          12;    // total # of cols
 
-
 // Utility Width Variable — you should never need to modify these
 @gwidth: (@cwidth * @cols) + (@gutter * @cols) * 1px; // grid width
 
-  /*
-   * DEBUG ################################################
-   * 
-   * (@cwidth*@cols) + (@gutter*@cols) * 1px; // grid width
-   * (60 * 12) + (20 * 12) * 1px = 720 + 240 * 1px = 960px
-   * 
-   * END DEBUG ############################################
-   */
-           
-            
 // Set @twidth to 100% for a fluid layout
 @twidth: @gwidth; // total width
 
@@ -56,14 +45,13 @@ body {
 	.clearfix;
 }
 
-
-
 /* 
  * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
  * However, it was never used (even in original version) to do anything. ???
  * 
  * Something should be solved here to allow "overwriting" of the columns for a row.
  */
+
 .row(@cols:@cols) {
 	display: block;
 	margin: 0 auto;
@@ -75,7 +63,6 @@ body {
 	display: block;
 	position: relative;
 	float: left;
-	
 	width: @twidth * (((@gutter + @cwidth) * @x) - @gutter) / @gwidth;
 	margin: 0 (@twidth * (@gutter / 2) / @gwidth);
 }
