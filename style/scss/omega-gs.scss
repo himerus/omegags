@@ -12,17 +12,18 @@
 
 
 // Default grid sizing (960px)
-$cwidth:        60px;    // column width
-$gutter:        20px;    // gutter width 
-$cols:          12;    // total # of cols
+$cwidth:        60px !default;    // column width
+$gutter:        20px !default;    // gutter width 
+$cols:          12 !default;    // total # of cols
 
 // Utility Width Variable — you should never need to modify these
+
 @function gwidth($cols:$cols) {
 	@return ($cwidth * $cols) + ($gutter * $cols); // grid width
 }
 
 // Set $twidth to 100% for a fluid layout
-$twidth: gwidth($cols); // total width
+$twidth: gwidth($cols) !default; // total width
 
 // The micro clearfix 
 // http://nicolasgallagher.com/micro-clearfix-hack/

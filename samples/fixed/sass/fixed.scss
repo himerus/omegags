@@ -1,10 +1,10 @@
-@import '../../../style/scss/omega-gs.scss';
-
 // Default grid sizing (960px)
 $cwidth:        60px;    // column width
 $gutter:        20px;    // gutter width 
 $cols:          12;    // total # of cols
 //$twidth:        100%;  // uncomment to use percentage based layout
+
+@import '../../../style/scss/omega-gs.scss';
 
 #main {
   @include clearfix();
