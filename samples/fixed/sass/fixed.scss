@@ -2,6 +2,7 @@
 $cwidth:        60px;    // column width
 $gutter:        20px;    // gutter width 
 $cols:          12;    // total # of cols
+$dir:           'LTR'; // LTR or RTL
 //$twidth:        100%;  // uncomment to use percentage based layout
 
 @import '../../../style/scss/omega-gs.scss';

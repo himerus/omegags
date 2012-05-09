@@ -8,6 +8,9 @@
  * 960px Grid =========
  *   $cwidth: 60; $gutter: 20; $cols: 12; 
  *   $cwidth: 40; $gutter: 20; $cols: 16;
+ * Fluid Grid =========
+ *   $cwidth: 60; $gutter: 20; $cols: 12; 
+ *   $cwidth: 40; $gutter: 20; $cols: 16;
  */
 body {
   width: 100%;

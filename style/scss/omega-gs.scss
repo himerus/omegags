@@ -1,20 +1,24 @@
-  /*
-   * SAMPLE GRID SIZES ###########################
-   * Use these, or your own calculations for a fixed width grid.
-   * 1200px Grid =========
-   *   $cwidth: 80; $gutter: 20; $cols: 12; 
-   *   $cwidth: 55; $gutter: 20; $cols: 16;
-   *
-   * 960px Grid =========
-   *   $cwidth: 60; $gutter: 20; $cols: 12; 
-   *   $cwidth: 40; $gutter: 20; $cols: 16;
-   */
+/*
+ * SAMPLE GRID SIZES ###########################
+ * Use these, or your own calculations for a fixed width grid.
+ * 1200px Grid =========
+ *   $cwidth: 80; $gutter: 20; $cols: 12; 
+ *   $cwidth: 55; $gutter: 20; $cols: 16;
+ *
+ * 960px Grid =========
+ *   $cwidth: 60; $gutter: 20; $cols: 12; 
+ *   $cwidth: 40; $gutter: 20; $cols: 16;
+ * Fluid Grid =========
+ *   $cwidth: 60; $gutter: 20; $cols: 12; 
+ *   $cwidth: 40; $gutter: 20; $cols: 16;
+ */
 
 
 // Default grid sizing (960px)
 $cwidth:        60px !default;    // column width
 $gutter:        20px !default;    // gutter width 
 $cols:          12 !default;    // total # of cols
+$dir:           'LTR' !default;  // Values should be LTR or RTL
 
 // Utility Width Variable — you should never need to modify these
 
@@ -46,7 +50,6 @@ body {
   // is active so they don't scale to the browser while grid items overflow
   // (at least in a fixed layout) ????
   min-width: $twidth;
-  //min-width: 100%;
 	@include clearfix();
 }
 
@@ -67,25 +70,54 @@ body {
 @mixin column($x,$cols:$cols) {
 	display: block;
 	position: relative;
-	float: left;
+	
+	@if $dir == 'LTR' {
+	  float: left;
+	}
+	@if $dir == 'RTL' {
+	  float: right;
+	}
+	
 	width: $twidth * ((($gutter + $cwidth) * $x) - $gutter) / gwidth($cols);
 	margin: 0 ($twidth * ($gutter / 2) / gwidth($cols));
 }
 
 /* Content First push/pull effects */
 @mixin push($x:1) {
-	left: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	@if $dir == 'LTR' {
+	  left: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	}
+	@if $dir == 'RTL' {
+	  right: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	}
 }
 
 @mixin pull($x:1) {
-	right: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	@if $dir == 'LTR' {
+	  right: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	}
+	@if $dir == 'RTL' {
+	  left: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	}
+	
 }
 
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
 @mixin prefix($x:1) {
-  margin-left: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+  @if $dir == 'LTR' {
+	  margin-left: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	}
+	@if $dir == 'RTL' {
+	  margin-right: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	}
 }
 
 @mixin suffix($x:1) {
-  margin-right: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+  @if $dir == 'LTR' {
+	  margin-right: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	}
+	@if $dir == 'RTL' {
+	  margin-left: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	}
+  
 }

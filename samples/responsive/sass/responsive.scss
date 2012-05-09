@@ -1,6 +1,6 @@
 // Remove the definition below for a pixel-based layout
 $twidth: 100%;
-
+$dir: 'LTR'; // LTR or RTL
 @import '../../../style/scss/omega-gs.scss';
 
 // Main mobile-first layout
