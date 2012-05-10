@@ -6,7 +6,6 @@ $twidth: 100%;
 // Main mobile-first layout
 #main {
   @include clearfix();
-  max-width: 1200px;
   margin: 0 auto;
   
   #content-wrapper,
@@ -36,27 +35,49 @@ $twidth: 100%;
 
 // landscape mobile
 @media screen and (min-width: 480px) and (max-width: 719px) {
-
+  // (1200px)
+  $cwidth: 70px;
+  $gutter: 10px;
+  $cols: 6;
+  // needed to reset the grid width
+  $twidth: gwidth();
+  
   #main {	
+    #content-wrapper,
+    #postscript-wrapper {
+      @include row(6);
+      margin-bottom: 1em;
+    }
   	#content {
-  	  @include column(12);
+  	  @include column(6);
   	  margin-bottom: 1em;
     }
     #sidebar_first {
-    	@include column(6);
-    	@include push(6);
+    	@include column(3);
+    	@include push(3);
     }
     #sidebar_second {
-    	@include column(6);
-    	@include pull(6);
+    	@include column(3);
+    	@include pull(3);
     }
   }
 }
 
 // portrait tablet/small screen
 @media screen and (min-width: 720px) and (max-width: 959px) {
-
-  #main {	
+  // (720px)
+  $cwidth: 40px;
+  $gutter: 20px;
+  $cols: 12;
+  // needed to reset the grid width
+  $twidth: gwidth();
+  
+  #main {
+    #content-wrapper,
+    #postscript-wrapper {
+      @include row(12);
+      margin-bottom: 1em;
+    }
   	#content {
   	  @include column(9);
   	  margin-bottom: 1em;
@@ -77,8 +98,20 @@ $twidth: 100%;
 
 // larger screen
 @media screen and (min-width: 960px) and (max-width: 1199px) {
+  // (960px)
+  $cwidth: 60px;
+  $gutter: 20px;
+  $cols: 12;
+  // needed to reset the grid width
+  $twidth: gwidth();
   
   #main {	
+    #content-wrapper,
+    #postscript-wrapper {
+      @include row(12);
+      margin-bottom: 1em;
+    }
+
   	#content {
   	  @include column(6);
   	  @include push(6);
@@ -110,8 +143,20 @@ $twidth: 100%;
 
 // larger screen
 @media screen and (min-width: 1200px) {
+  // (1200px)
+  $cwidth: 80px;
+  $gutter: 20px;
+  $cols: 12;
+  // needed to reset the grid width
+  $twidth: gwidth();
   
   #main {	
+  
+    #content-wrapper,
+    #postscript-wrapper {
+      @include row(12);
+      margin-bottom: 1em;
+    }
   	#content {
   	  @include column(6);
   	  @include push(3);

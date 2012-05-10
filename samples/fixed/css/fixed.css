@@ -15,15 +15,12 @@
 body {
   width: 100%;
   min-width: 960px;
-  *zoom: 1;
-}
-body:before, body:after {
-  content: "";
-  display: table;
-}
-body:after {
-  clear: both;
-}
+  *zoom: 1; }
+  body:before, body:after {
+    content: "";
+    display: table; }
+  body:after {
+    clear: both; }
 
 /* 
  * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
@@ -34,72 +31,60 @@ body:after {
 /* Content First push/pull effects */
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
 #main {
-  *zoom: 1;
-}
-#main:before, #main:after {
-  content: "";
-  display: table;
-}
-#main:after {
-  clear: both;
-}
-#main #content-wrapper,
-#main #postscript-wrapper {
-  display: block;
-  margin: 0 auto;
-  width: 960px;
-  *zoom: 1;
-  margin-bottom: 1em;
-}
-#main #content-wrapper:before, #main #content-wrapper:after,
-#main #postscript-wrapper:before,
-#main #postscript-wrapper:after {
-  content: "";
-  display: table;
-}
-#main #content-wrapper:after,
-#main #postscript-wrapper:after {
-  clear: both;
-}
-#main #content {
-  display: block;
-  position: relative;
-  float: left;
-  width: 460px;
-  margin: 0 10px;
-}
-#main #sidebar_first {
-  display: block;
-  position: relative;
-  float: left;
-  width: 220px;
-  margin: 0 10px;
-}
-#main #sidebar_second {
-  display: block;
-  position: relative;
-  float: left;
-  width: 220px;
-  margin: 0 10px;
-}
-#main #postscript_first {
-  display: block;
-  position: relative;
-  float: left;
-  width: 300px;
-  margin: 0 10px;
-}
-#main #postscript_second {
-  display: block;
-  position: relative;
-  float: left;
-  width: 300px;
-  margin: 0 10px;
-}
-#main #postscript_third {
-  display: block;
-  position: relative;
-  float: left;
-  width: 300px;
-  margin: 0 10px;
-}
+  *zoom: 1; }
+  #main:before, #main:after {
+    content: "";
+    display: table; }
+  #main:after {
+    clear: both; }
+  #main #content-wrapper,
+  #main #postscript-wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 960px;
+    *zoom: 1;
+    margin-bottom: 1em; }
+    #main #content-wrapper:before, #main #content-wrapper:after,
+    #main #postscript-wrapper:before,
+    #main #postscript-wrapper:after {
+      content: "";
+      display: table; }
+    #main #content-wrapper:after,
+    #main #postscript-wrapper:after {
+      clear: both; }
+  #main #content {
+    display: block;
+    position: relative;
+    float: left;
+    width: 460px;
+    margin: 0 10px; }
+  #main #sidebar_first {
+    display: block;
+    position: relative;
+    float: left;
+    width: 220px;
+    margin: 0 10px; }
+  #main #sidebar_second {
+    display: block;
+    position: relative;
+    float: left;
+    width: 220px;
+    margin: 0 10px; }
+  #main #postscript_first {
+    display: block;
+    position: relative;
+    float: left;
+    width: 300px;
+    margin: 0 10px; }
+  #main #postscript_second {
+    display: block;
+    position: relative;
+    float: left;
+    width: 300px;
+    margin: 0 10px; }
+  #main #postscript_third {
+    display: block;
+    position: relative;
+    float: left;
+    width: 300px;
+    margin: 0 10px; }

@@ -21,7 +21,6 @@ $cols:          12 !default;    // total # of cols
 $dir:           'LTR' !default;  // Values should be LTR or RTL
 
 // Utility Width Variable — you should never need to modify these
-
 @function gwidth($cols:$cols) {
 	@return ($cwidth * $cols) + ($gutter * $cols); // grid width
 }
@@ -60,7 +59,7 @@ body {
  * Something should be solved here to allow "overwriting" of the columns for a row.
  */
 
-@mixin row($cols:$cols) {
+@mixin row($cols:$cols, $twidth:$twidth) {
 	display: block;
 	margin: 0 auto;
 	width: $twidth;

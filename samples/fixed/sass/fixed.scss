@@ -5,7 +5,7 @@ $cols:          12;    // total # of cols
 $dir:           'LTR'; // LTR or RTL
 //$twidth:        100%;  // uncomment to use percentage based layout
 
-@import '../../../style/scss/omega-gs.scss';
+@import '../../../style/scss/omega.scss';
 
 #main {
   @include clearfix();
