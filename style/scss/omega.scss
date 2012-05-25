@@ -21,12 +21,21 @@ $cols:          12 !default;    // total # of cols
 $dir:           'LTR' !default;  // Values should be LTR or RTL
 
 // Utility Width Variable — you should never need to modify these
-@function gwidth($cols:$cols) {
-	@return ($cwidth * $cols) + ($gutter * $cols); // grid width
+@function gwidth($c:$cols) {
+	@return ($cwidth * $c) + ($gutter * $c); // grid width
+}
+
+@function gratio($c, $cols:$cols) {
+  @return $cols / $c;
 }
 
 // Set $twidth to 100% for a fluid layout
 $twidth: gwidth($cols) !default; // total width
+
+// Utility function to simplify math used in mixins
+@function calcwidth() {
+  @return $twidth / gwidth($cols);
+}
 
 // The micro clearfix 
 // http://nicolasgallagher.com/micro-clearfix-hack/
@@ -47,10 +56,14 @@ body {
   width: 100%;
   // The min-width is needed so items outside the grid stay the correct width if horizontal scroll 
   // is active so they don't scale to the browser while grid items overflow
-  // (at least in a fixed layout) ????
   min-width: $twidth;
 	@include clearfix();
 }
+
+
+
+
+
 
 /* 
  * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
@@ -59,17 +72,38 @@ body {
  * Something should be solved here to allow "overwriting" of the columns for a row.
  */
 
-@mixin row($cols:$cols, $twidth:$twidth) {
+@mixin row($c:$cols) {
+  $rwidth: gwidth($c) * calcwidth();
+
+	width: $rwidth;
 	display: block;
-	margin: 0 auto;
-	width: $twidth;
+	margin: 0 auto;	
+	
 	@include clearfix();
 }
 
-@mixin column($x,$cols:$cols) {
+
+
+
+
+/**
+ *  You have the ability to specify the default number of columns used in the grid here
+ *  This recalculates the available space in a "row" so that the grid widths are standardized
+ *  in the full layout.
+ *  This only becomes apparent in fluid and nested layouts
+ */
+@mixin column($x, $realcols:$cols) {
 	display: block;
 	position: relative;
 	
+  /* original "working" functionality that fails in nested */
+	$colwidth: (gwidth($x) - $gutter) * calcwidth();
+	$colmargin: ($gutter / 2) * calcwidth();
+	
+	width: $colwidth;
+	margin: 0 $colmargin;
+	
+	/* RTL/LTR switching */
 	@if $dir == 'LTR' {
 	  float: left;
 	}
@@ -77,46 +111,86 @@ body {
 	  float: right;
 	}
 	
-	width: $twidth * ((($gutter + $cwidth) * $x) - $gutter) / gwidth($cols);
-	margin: 0 ($twidth * ($gutter / 2) / gwidth($cols));
+	/* Debugging code to display rendered width */
+	> .inner {
+	
+  	&:before {
+    	content: "width: " + $colwidth + ";";
+    	
+  	}
+  	.debug:after {
+  	  content: "margin: " + $colmargin + ";";
+  	}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Content First push/pull effects */
 @mixin push($x:1) {
 	@if $dir == 'LTR' {
-	  left: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	  left: ($gutter + $cwidth) * calcwidth() * $x;
 	}
 	@if $dir == 'RTL' {
-	  right: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	  right: ($gutter + $cwidth) * calcwidth() * $x;
 	}
 }
 
 @mixin pull($x:1) {
 	@if $dir == 'LTR' {
-	  right: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	  right: ($gutter + $cwidth) * calcwidth() * $x;
 	}
 	@if $dir == 'RTL' {
-	  left: ($twidth * ($gutter + $cwidth) / gwidth($cols)) * $x;
+	  left: ($gutter + $cwidth) * calcwidth() * $x;
 	}
-	
 }
 
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
 @mixin prefix($x:1) {
   @if $dir == 'LTR' {
-	  margin-left: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	  margin-left: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth();
 	}
 	@if $dir == 'RTL' {
-	  margin-right: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	  margin-right: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth();
 	}
 }
 
 @mixin suffix($x:1) {
   @if $dir == 'LTR' {
-	  margin-right: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	  margin-right: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth();
 	}
 	@if $dir == 'RTL' {
-	  margin-left: $twidth * ((($gutter + $cwidth) * $x) + $gutter / 2) / gwidth($cols);
+	  margin-left: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth();
 	}
-  
+}
+
+@mixin alpha() {
+  margin-left: 0;
+}
+@mixin omega() {
+  margin-right: 0;
 }

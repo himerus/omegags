@@ -1,0 +1,72 @@
+// Default grid sizing (960px)
+$cwidth:        60px;    // column width
+$gutter:        20px;    // gutter width 
+$cols:          12;    // total # of cols
+$dir:           'LTR'; // LTR or RTL
+//$twidth:        100%;  // uncomment to use percentage based layout
+
+@import '../../../style/scss/omega.scss';
+
+#main {
+  @include clearfix();
+  min-width: 720px;
+  
+  #content-wrapper,
+  #postscript-wrapper {
+    @include row(12);
+    margin-bottom: 1em;
+  }
+  
+  #content {
+	  @include column(6);
+	  
+	  #content-inner {
+	    @include row(6);
+	    @include clearfix();
+	  }
+
+	  #content-top,
+	  #content-bottom {
+	    //@include column(6);
+	    //@include alpha();
+	    //@include omega();
+	    @include clearfix();
+	    
+	    margin-top: 10px;
+	  }
+	  #content-left,
+	  #content-center,
+	  #content-right {
+	    // nested only works in fixed with atm.
+	    @include column(2,6);
+	    margin-top: 10px;
+	  }
+	  
+	  #content-left {
+	    @include alpha();
+	  }
+	  #content-right {
+	    @include omega();
+	  }
+  }
+
+  #sidebar_first {
+  	@include column(3);
+  }
+
+  #sidebar_second {
+  	@include column(3);
+  }
+  
+  #postscript_first {
+    @include column(4);
+  }
+  
+  #postscript_second {
+    @include column(4);
+  }
+  
+  #postscript_third {
+    @include column(4);
+  }
+}

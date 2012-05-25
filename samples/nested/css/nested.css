@@ -41,6 +41,7 @@ body:after {
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
 #main {
   *zoom: 1;
+  min-width: 720px;
 }
 #main:before, #main:after {
   content: "";
@@ -82,6 +83,71 @@ body:after {
 }
 #main #content > .inner .debug:after {
   content: "margin: 10px;";
+}
+#main #content #content-inner {
+  width: 480px;
+  display: block;
+  margin: 0 auto;
+  *zoom: 1;
+  *zoom: 1;
+}
+#main #content #content-inner:before, #main #content #content-inner:after {
+  content: "";
+  display: table;
+}
+#main #content #content-inner:after {
+  clear: both;
+}
+#main #content #content-inner:before, #main #content #content-inner:after {
+  content: "";
+  display: table;
+}
+#main #content #content-inner:after {
+  clear: both;
+}
+#main #content #content-top,
+#main #content #content-bottom {
+  *zoom: 1;
+  margin-top: 10px;
+}
+#main #content #content-top:before, #main #content #content-top:after,
+#main #content #content-bottom:before,
+#main #content #content-bottom:after {
+  content: "";
+  display: table;
+}
+#main #content #content-top:after,
+#main #content #content-bottom:after {
+  clear: both;
+}
+#main #content #content-left,
+#main #content #content-center,
+#main #content #content-right {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 140px;
+  margin: 0 10px;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+  margin-top: 10px;
+}
+#main #content #content-left > .inner:before,
+#main #content #content-center > .inner:before,
+#main #content #content-right > .inner:before {
+  content: "width: 140px;";
+}
+#main #content #content-left > .inner .debug:after,
+#main #content #content-center > .inner .debug:after,
+#main #content #content-right > .inner .debug:after {
+  content: "margin: 10px;";
+}
+#main #content #content-left {
+  margin-left: 0;
+}
+#main #content #content-right {
+  margin-right: 0;
 }
 #main #sidebar_first {
   display: block;

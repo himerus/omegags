@@ -15,12 +15,15 @@
 body {
   width: 100%;
   min-width: 100%;
-  *zoom: 1; }
-  body:before, body:after {
-    content: "";
-    display: table; }
-  body:after {
-    clear: both; }
+  *zoom: 1;
+}
+body:before, body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
 
 /* 
  * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
@@ -28,242 +31,502 @@ body {
  * 
  * Something should be solved here to allow "overwriting" of the columns for a row.
  */
+/**
+ *  You have the ability to specify the default number of columns used in the grid here
+ *  This recalculates the available space in a "row" so that the grid widths are standardized
+ *  in the full layout.
+ *  This only becomes apparent in fluid and nested layouts
+ */
 /* Content First push/pull effects */
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
 #main {
   *zoom: 1;
-  margin: 0 auto; }
-  #main:before, #main:after {
-    content: "";
-    display: table; }
-  #main:after {
-    clear: both; }
-  #main #content-wrapper,
-  #main #postscript-wrapper {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    *zoom: 1;
-    margin-bottom: 1em; }
-    #main #content-wrapper:before, #main #content-wrapper:after,
-    #main #postscript-wrapper:before,
-    #main #postscript-wrapper:after {
-      content: "";
-      display: table; }
-    #main #content-wrapper:after,
-    #main #postscript-wrapper:after {
-      clear: both; }
-  #main #content,
-  #main #sidebar_first,
-  #main #sidebar_second,
-  #main #postscript_first {
-    display: block;
-    position: relative;
-    float: left;
-    width: 97.917%;
-    margin: 0 1.042%;
-    margin-bottom: 1em; }
-  #main #content {
-    display: block;
-    position: relative;
-    float: left;
-    width: 97.917%;
-    margin: 0 1.042%;
-    margin-bottom: 1em; }
-  #main #postscript_second,
-  #main #postscript_third {
-    display: block;
-    position: relative;
-    float: left;
-    width: 47.917%;
-    margin: 0 1.042%; }
+  margin: 0 auto;
+}
+#main:before, #main:after {
+  content: "";
+  display: table;
+}
+#main:after {
+  clear: both;
+}
+#main #content-wrapper,
+#main #postscript-wrapper {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  *zoom: 1;
+  margin-bottom: 1em;
+}
+#main #content-wrapper:before, #main #content-wrapper:after,
+#main #postscript-wrapper:before,
+#main #postscript-wrapper:after {
+  content: "";
+  display: table;
+}
+#main #content-wrapper:after,
+#main #postscript-wrapper:after {
+  clear: both;
+}
+#main #content,
+#main #sidebar_first,
+#main #sidebar_second,
+#main #postscript_first {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 97.917%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+  margin-bottom: 1em;
+}
+#main #content > .inner:before,
+#main #sidebar_first > .inner:before,
+#main #sidebar_second > .inner:before,
+#main #postscript_first > .inner:before {
+  content: "width: 97.917%;";
+}
+#main #content > .inner .debug:after,
+#main #sidebar_first > .inner .debug:after,
+#main #sidebar_second > .inner .debug:after,
+#main #postscript_first > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
+#main #content {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 97.917%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+  margin-bottom: 1em;
+}
+#main #content > .inner:before {
+  content: "width: 97.917%;";
+}
+#main #content > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
+#main #postscript_second,
+#main #postscript_third {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 47.917%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+}
+#main #postscript_second > .inner:before,
+#main #postscript_third > .inner:before {
+  content: "width: 47.917%;";
+}
+#main #postscript_second > .inner .debug:after,
+#main #postscript_third > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
 
 @media screen and (min-width: 480px) and (max-width: 719px) {
   #main #content-wrapper,
   #main #postscript-wrapper {
+    width: 480px;
     display: block;
     margin: 0 auto;
-    width: 480px;
     *zoom: 1;
-    margin-bottom: 1em; }
-    #main #content-wrapper:before, #main #content-wrapper:after,
-    #main #postscript-wrapper:before,
-    #main #postscript-wrapper:after {
-      content: "";
-      display: table; }
-    #main #content-wrapper:after,
-    #main #postscript-wrapper:after {
-      clear: both; }
+    margin-bottom: 1em;
+  }
+  #main #content-wrapper:before, #main #content-wrapper:after,
+  #main #postscript-wrapper:before,
+  #main #postscript-wrapper:after {
+    content: "";
+    display: table;
+  }
+  #main #content-wrapper:after,
+  #main #postscript-wrapper:after {
+    clear: both;
+  }
   #main #content {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 470px;
     margin: 0 5px;
-    margin-bottom: 1em; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    margin-bottom: 1em;
+  }
+  #main #content > .inner:before {
+    content: "width: 470px;";
+  }
+  #main #content > .inner .debug:after {
+    content: "margin: 5px;";
+  }
   #main #sidebar_first {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 230px;
     margin: 0 5px;
-    left: 240px; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    left: 240px;
+  }
+  #main #sidebar_first > .inner:before {
+    content: "width: 230px;";
+  }
+  #main #sidebar_first > .inner .debug:after {
+    content: "margin: 5px;";
+  }
   #main #sidebar_second {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 230px;
     margin: 0 5px;
-    right: 240px; } }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    right: 240px;
+  }
+  #main #sidebar_second > .inner:before {
+    content: "width: 230px;";
+  }
+  #main #sidebar_second > .inner .debug:after {
+    content: "margin: 5px;";
+  }
+}
 @media screen and (min-width: 720px) and (max-width: 959px) {
   #main #content-wrapper,
   #main #postscript-wrapper {
+    width: 720px;
     display: block;
     margin: 0 auto;
-    width: 720px;
     *zoom: 1;
-    margin-bottom: 1em; }
-    #main #content-wrapper:before, #main #content-wrapper:after,
-    #main #postscript-wrapper:before,
-    #main #postscript-wrapper:after {
-      content: "";
-      display: table; }
-    #main #content-wrapper:after,
-    #main #postscript-wrapper:after {
-      clear: both; }
+    margin-bottom: 1em;
+  }
+  #main #content-wrapper:before, #main #content-wrapper:after,
+  #main #postscript-wrapper:before,
+  #main #postscript-wrapper:after {
+    content: "";
+    display: table;
+  }
+  #main #content-wrapper:after,
+  #main #postscript-wrapper:after {
+    clear: both;
+  }
   #main #content {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 520px;
     margin: 0 10px;
-    margin-bottom: 1em; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    margin-bottom: 1em;
+  }
+  #main #content > .inner:before {
+    content: "width: 520px;";
+  }
+  #main #content > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #sidebar_first {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 160px;
-    margin: 0 10px; }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #sidebar_first > .inner:before {
+    content: "width: 160px;";
+  }
+  #main #sidebar_first > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #sidebar_second {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 700px;
-    margin: 0 10px; }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #sidebar_second > .inner:before {
+    content: "width: 700px;";
+  }
+  #main #sidebar_second > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #postscript_first,
   #main #postscript_second,
   #main #postscript_third {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 220px;
-    margin: 0 10px; } }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #postscript_first > .inner:before,
+  #main #postscript_second > .inner:before,
+  #main #postscript_third > .inner:before {
+    content: "width: 220px;";
+  }
+  #main #postscript_first > .inner .debug:after,
+  #main #postscript_second > .inner .debug:after,
+  #main #postscript_third > .inner .debug:after {
+    content: "margin: 10px;";
+  }
+}
 @media screen and (min-width: 960px) and (max-width: 1199px) {
   #main #content-wrapper,
   #main #postscript-wrapper {
+    width: 960px;
     display: block;
     margin: 0 auto;
-    width: 960px;
     *zoom: 1;
-    margin-bottom: 1em; }
-    #main #content-wrapper:before, #main #content-wrapper:after,
-    #main #postscript-wrapper:before,
-    #main #postscript-wrapper:after {
-      content: "";
-      display: table; }
-    #main #content-wrapper:after,
-    #main #postscript-wrapper:after {
-      clear: both; }
+    margin-bottom: 1em;
+  }
+  #main #content-wrapper:before, #main #content-wrapper:after,
+  #main #postscript-wrapper:before,
+  #main #postscript-wrapper:after {
+    content: "";
+    display: table;
+  }
+  #main #content-wrapper:after,
+  #main #postscript-wrapper:after {
+    clear: both;
+  }
   #main #content {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 460px;
     margin: 0 10px;
-    left: 480px; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    left: 480px;
+  }
+  #main #content > .inner:before {
+    content: "width: 460px;";
+  }
+  #main #content > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #sidebar_first {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 220px;
     margin: 0 10px;
-    right: 480px; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    right: 480px;
+  }
+  #main #sidebar_first > .inner:before {
+    content: "width: 220px;";
+  }
+  #main #sidebar_first > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #sidebar_second {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 220px;
     margin: 0 10px;
-    right: 480px; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    right: 480px;
+  }
+  #main #sidebar_second > .inner:before {
+    content: "width: 220px;";
+  }
+  #main #sidebar_second > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #postscript_first {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 460px;
-    margin: 0 10px; }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #postscript_first > .inner:before {
+    content: "width: 460px;";
+  }
+  #main #postscript_first > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #postscript_second {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 220px;
-    margin: 0 10px; }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #postscript_second > .inner:before {
+    content: "width: 220px;";
+  }
+  #main #postscript_second > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #postscript_third {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 220px;
-    margin: 0 10px; } }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #postscript_third > .inner:before {
+    content: "width: 220px;";
+  }
+  #main #postscript_third > .inner .debug:after {
+    content: "margin: 10px;";
+  }
+}
 @media screen and (min-width: 1200px) {
   #main #content-wrapper,
   #main #postscript-wrapper {
+    width: 1200px;
     display: block;
     margin: 0 auto;
-    width: 1200px;
     *zoom: 1;
-    margin-bottom: 1em; }
-    #main #content-wrapper:before, #main #content-wrapper:after,
-    #main #postscript-wrapper:before,
-    #main #postscript-wrapper:after {
-      content: "";
-      display: table; }
-    #main #content-wrapper:after,
-    #main #postscript-wrapper:after {
-      clear: both; }
+    margin-bottom: 1em;
+  }
+  #main #content-wrapper:before, #main #content-wrapper:after,
+  #main #postscript-wrapper:before,
+  #main #postscript-wrapper:after {
+    content: "";
+    display: table;
+  }
+  #main #content-wrapper:after,
+  #main #postscript-wrapper:after {
+    clear: both;
+  }
   #main #content {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 580px;
     margin: 0 10px;
-    left: 300px; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    left: 300px;
+  }
+  #main #content > .inner:before {
+    content: "width: 580px;";
+  }
+  #main #content > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #sidebar_first {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 280px;
     margin: 0 10px;
-    right: 600px; }
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+    right: 600px;
+  }
+  #main #sidebar_first > .inner:before {
+    content: "width: 280px;";
+  }
+  #main #sidebar_first > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #sidebar_second {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 280px;
-    margin: 0 10px; }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #sidebar_second > .inner:before {
+    content: "width: 280px;";
+  }
+  #main #sidebar_second > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #postscript_first {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 380px;
-    margin: 0 10px; }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #postscript_first > .inner:before {
+    content: "width: 380px;";
+  }
+  #main #postscript_first > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #postscript_second {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 380px;
-    margin: 0 10px; }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #postscript_second > .inner:before {
+    content: "width: 380px;";
+  }
+  #main #postscript_second > .inner .debug:after {
+    content: "margin: 10px;";
+  }
   #main #postscript_third {
     display: block;
     position: relative;
-    float: left;
+    /* original "working" functionality that fails in nested */
     width: 380px;
-    margin: 0 10px; } }
+    margin: 0 10px;
+    /* RTL/LTR switching */
+    float: left;
+    /* Debugging code to display rendered width */
+  }
+  #main #postscript_third > .inner:before {
+    content: "width: 380px;";
+  }
+  #main #postscript_third > .inner .debug:after {
+    content: "margin: 10px;";
+  }
+}

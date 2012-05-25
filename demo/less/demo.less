@@ -76,6 +76,28 @@
       padding: 10px 15px;
     }
   }
+  
+  /* Nested Regions Demo */
+  #content-top,
+  #content-bottom,
+  #content-left,
+  #content-center,
+  #content-right {
+    min-height: 120px;
+    #gradient > .vertical(@grayLighter, @white);
+    
+    h2 {
+      font-size: 16px;
+      .border-radius(0);
+      color: @grayLighter;
+      padding: 10px 15px;
+      #gradient > .vertical(@grayLight, @gray);
+    }
+
+    .inner {
+      padding: 10px 15px;
+    }
+  }
 }
 
 .navbar-inner {

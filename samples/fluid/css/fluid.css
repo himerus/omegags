@@ -15,12 +15,15 @@
 body {
   width: 100%;
   min-width: 100%;
-  *zoom: 1; }
-  body:before, body:after {
-    content: "";
-    display: table; }
-  body:after {
-    clear: both; }
+  *zoom: 1;
+}
+body:before, body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
 
 /* 
  * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
@@ -28,64 +31,136 @@ body {
  * 
  * Something should be solved here to allow "overwriting" of the columns for a row.
  */
+/**
+ *  You have the ability to specify the default number of columns used in the grid here
+ *  This recalculates the available space in a "row" so that the grid widths are standardized
+ *  in the full layout.
+ *  This only becomes apparent in fluid and nested layouts
+ */
 /* Content First push/pull effects */
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
 #main {
   min-width: 740px;
-  *zoom: 1; }
-  #main:before, #main:after {
-    content: "";
-    display: table; }
-  #main:after {
-    clear: both; }
-  #main #content-wrapper,
-  #main #postscript-wrapper {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    *zoom: 1;
-    margin-bottom: 1em; }
-    #main #content-wrapper:before, #main #content-wrapper:after,
-    #main #postscript-wrapper:before,
-    #main #postscript-wrapper:after {
-      content: "";
-      display: table; }
-    #main #content-wrapper:after,
-    #main #postscript-wrapper:after {
-      clear: both; }
-  #main #content {
-    display: block;
-    position: relative;
-    float: left;
-    width: 47.917%;
-    margin: 0 1.042%; }
-  #main #sidebar_first {
-    display: block;
-    position: relative;
-    float: left;
-    width: 22.917%;
-    margin: 0 1.042%; }
-  #main #sidebar_second {
-    display: block;
-    position: relative;
-    float: left;
-    width: 22.917%;
-    margin: 0 1.042%; }
-  #main #postscript_first {
-    display: block;
-    position: relative;
-    float: left;
-    width: 31.25%;
-    margin: 0 1.042%; }
-  #main #postscript_second {
-    display: block;
-    position: relative;
-    float: left;
-    width: 31.25%;
-    margin: 0 1.042%; }
-  #main #postscript_third {
-    display: block;
-    position: relative;
-    float: left;
-    width: 31.25%;
-    margin: 0 1.042%; }
+  *zoom: 1;
+}
+#main:before, #main:after {
+  content: "";
+  display: table;
+}
+#main:after {
+  clear: both;
+}
+#main #content-wrapper,
+#main #postscript-wrapper {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  *zoom: 1;
+  margin-bottom: 1em;
+}
+#main #content-wrapper:before, #main #content-wrapper:after,
+#main #postscript-wrapper:before,
+#main #postscript-wrapper:after {
+  content: "";
+  display: table;
+}
+#main #content-wrapper:after,
+#main #postscript-wrapper:after {
+  clear: both;
+}
+#main #content {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 47.917%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+}
+#main #content > .inner:before {
+  content: "width: 47.917%;";
+}
+#main #content > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
+#main #sidebar_first {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 22.917%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+}
+#main #sidebar_first > .inner:before {
+  content: "width: 22.917%;";
+}
+#main #sidebar_first > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
+#main #sidebar_second {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 22.917%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+}
+#main #sidebar_second > .inner:before {
+  content: "width: 22.917%;";
+}
+#main #sidebar_second > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
+#main #postscript_first {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 31.25%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+}
+#main #postscript_first > .inner:before {
+  content: "width: 31.25%;";
+}
+#main #postscript_first > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
+#main #postscript_second {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 31.25%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+}
+#main #postscript_second > .inner:before {
+  content: "width: 31.25%;";
+}
+#main #postscript_second > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
+#main #postscript_third {
+  display: block;
+  position: relative;
+  /* original "working" functionality that fails in nested */
+  width: 31.25%;
+  margin: 0 1.042%;
+  /* RTL/LTR switching */
+  float: left;
+  /* Debugging code to display rendered width */
+}
+#main #postscript_third > .inner:before {
+  content: "width: 31.25%;";
+}
+#main #postscript_third > .inner .debug:after {
+  content: "margin: 1.042%;";
+}
