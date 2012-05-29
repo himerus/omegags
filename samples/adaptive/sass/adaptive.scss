@@ -34,13 +34,12 @@ $twidth: 100%;
 
 
 // landscape mobile
-@media screen and (min-width: 480px) and (max-width: 719px) {
-  // (1200px)
+@media all and (min-width: 480px) and (max-width: 719px) {
+  /* (480px) */
   $cwidth: 70px;
   $gutter: 10px;
   $cols: 6;
-  // needed to reset the grid width
-  $twidth: gwidth();
+  $twidth: gwidth($cols);
   
   #main {	
     #content-wrapper,
@@ -64,13 +63,12 @@ $twidth: 100%;
 }
 
 // portrait tablet/small screen
-@media screen and (min-width: 720px) and (max-width: 959px) {
-  // (720px)
+@media all and (min-width: 720px) and (max-width: 959px) {
+  /* (720px) */
   $cwidth: 40px;
   $gutter: 20px;
   $cols: 12;
-  // needed to reset the grid width
-  $twidth: gwidth();
+  $twidth: gwidth($cols);
   
   #main {
     #content-wrapper,
@@ -97,13 +95,12 @@ $twidth: 100%;
 }
 
 // larger screen
-@media screen and (min-width: 960px) and (max-width: 1199px) {
-  // (960px)
+@media all and (min-width: 960px) and (max-width: 1199px) {
+  /* (960px) */
   $cwidth: 60px;
   $gutter: 20px;
   $cols: 12;
-  // needed to reset the grid width
-  $twidth: gwidth();
+  $twidth: gwidth($cols);
   
   #main {	
     #content-wrapper,
@@ -142,13 +139,12 @@ $twidth: 100%;
 }
 
 // larger screen
-@media screen and (min-width: 1200px) {
-  // (1200px)
+@media all and (min-width: 1200px) {
+  /* (1200px) */
   $cwidth: 80px;
   $gutter: 20px;
   $cols: 12;
-  // needed to reset the grid width
-  $twidth: gwidth();
+  $twidth: gwidth($cols);
   
   #main {	
   

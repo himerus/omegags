@@ -35,6 +35,12 @@ $twidth: gwidth($cols) !default; // total width
   @return $twidth / gwidth($cols);
 }
 
+/* Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. 
+ * See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+ */ 
+$min-width: 480;
+$correction: 0.5 / $min-width * 100;
+
 // The micro clearfix 
 // http://nicolasgallagher.com/micro-clearfix-hack/
 @mixin clearfix() {
@@ -58,19 +64,10 @@ body {
 	@include clearfix();
 }
 
-
-
-
-
-
-/* 
- * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
- * However, it was never used (even in original version) to do anything. ???
- * 
- * Something should be solved here to allow "overwriting" of the columns for a row.
- */
-
 @mixin row($c:$cols) {
+  display: block;
+	margin: 0 auto;	
+	
   /* default row width */
   $rwidth: gwidth($c) * calcwidth();
   /* assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts */
@@ -78,16 +75,12 @@ body {
     $rwidth: 100%;
   }
 	width: $rwidth;
-	display: block;
-	margin: 0 auto;	
+	/* IE 6 & 7 sub-pixel rounding fix */
+	*width: $rwidth - $correction;
   
   /* Make sure the row clears itself */
 	@include clearfix();
 }
-
-
-
-
 
 /**
  *  You have the ability to specify the default number of columns used in the grid here
@@ -95,6 +88,14 @@ body {
  *  in the full layout.
  *  This only becomes apparent in fluid and nested layouts
  */
+/* While in a standard, fixed-width grid, it's easy to remove margins for nested grids, in a fluid layout it 
+	 * poses a small problem when determining the full width of the elements. 
+	 * For now, we assume that we should take that margin we are removing and put it on the other margin
+	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
+	 * on design.
+	 *
+	 * Essentially, I don't recommend using the column() mixin for nested columns inside a fluid layout
+   */
 @mixin column($x, $realcols:$cols, $margin: 'normal') {
 	display: block;
 	position: relative;
@@ -113,14 +114,10 @@ body {
 	
 	width: $colwidth;
 	margin: 0 $rightmargin 0 $leftmargin;
+	/* IE 6 & 7 sub-pixel rounding fix */
+	*width: $colwidth - $correction;
+	*margin: 0 $rightmargin - $correction 0 $leftmargin - $correction;
 	
-	
-	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-	 * when determining the full width of the elements. 
-	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-	 * on design.
-   */
 	@if $margin == 'alpha' {
 	  @if $twidth == 100% {
   	  $rightmargin: $rightmargin * 2;
@@ -133,12 +130,7 @@ body {
 	  }
     margin: 0 0 0 $leftmargin;	
 	}
-	
-	
-	
-	
-	
-	
+
 	/* RTL/LTR switching */
 	@if $dir == 'LTR' {
 	  float: left;
@@ -146,47 +138,7 @@ body {
 	@if $dir == 'RTL' {
 	  float: right;
 	}
-	
-	/* Debugging code to display rendered width & margins */
-	/*
-	> .inner {
-	
-  	&:before {
-    	content: "width: " + $colwidth + ";";
-    	
-  	}
-  	.debug:after {
-  	  content: "margin: " + $colmargin + ";";
-  	}
-	}
-	*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Content First push/pull effects */
 @mixin push($x:1) {

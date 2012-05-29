@@ -15,9 +15,12 @@
 /* Utility function to simplify math used in mixins 
  * Will convert (when needed) widths to a percentage
  */
+/* Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. 
+ * See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+ */
 body {
   width: 100%;
-  min-width: 960px;
+  min-width: 100%;
   *zoom: 1;
 }
 body:before, body:after {
@@ -28,18 +31,20 @@ body:after {
   clear: both;
 }
 
-/* 
- * Currently the argument passed here pulls the column count from the global system, or allows you to overwrite it. 
- * However, it was never used (even in original version) to do anything. ???
- * 
- * Something should be solved here to allow "overwriting" of the columns for a row.
- */
 /**
  *  You have the ability to specify the default number of columns used in the grid here
  *  This recalculates the available space in a "row" so that the grid widths are standardized
  *  in the full layout.
  *  This only becomes apparent in fluid and nested layouts
  */
+/* While in a standard, fixed-width grid, it's easy to remove margins for nested grids, in a fluid layout it 
+	 * poses a small problem when determining the full width of the elements. 
+	 * For now, we assume that we should take that margin we are removing and put it on the other margin
+	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
+	 * on design.
+	 *
+	 * Essentially, I don't recommend using the column() mixin for nested columns inside a fluid layout
+   */
 /* Content First push/pull effects */
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
 #main {
@@ -55,11 +60,13 @@ body:after {
 }
 #main #content-wrapper,
 #main #postscript-wrapper {
-  /* default row width */
-  /* assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts */
-  width: 960px;
   display: block;
   margin: 0 auto;
+  /* default row width */
+  /* assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts */
+  width: 100%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 99.896%;
   /* Make sure the row clears itself */
   *zoom: 1;
   margin-bottom: 1em;
@@ -78,36 +85,23 @@ body:after {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 460px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 47.917%;
+  margin: 0 1.042% 0 1.042%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 47.813%;
+  *margin: 0 0.938% 0 0.938%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
 }
 #main #content #content-inner {
-  /* default row width */
-  /* assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts */
-  width: 480px;
   display: block;
   margin: 0 auto;
+  /* default row width */
+  /* assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts */
+  width: 100%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 99.896%;
   /* Make sure the row clears itself */
   *zoom: 1;
 }
@@ -137,228 +131,108 @@ body:after {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 140px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
-  margin: 0 10px 0 0;
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 29.167%;
+  margin: 0 2.083% 0 2.083%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 29.063%;
+  *margin: 0 1.979% 0 1.979%;
+  margin: 0 4.167% 0 0;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
   margin-top: 10px;
 }
 #main #content #content-right {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 140px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
-  margin: 0 0 0 10px;
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 29.167%;
+  margin: 0 2.083% 0 2.083%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 29.063%;
+  *margin: 0 1.979% 0 1.979%;
+  margin: 0 0 0 4.167%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
   margin-top: 10px;
 }
 #main #content #content-center {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 140px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 29.167%;
+  margin: 0 2.083% 0 2.083%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 29.063%;
+  *margin: 0 1.979% 0 1.979%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
   margin-top: 10px;
 }
 #main #sidebar_first {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 220px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 22.917%;
+  margin: 0 1.042% 0 1.042%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 22.813%;
+  *margin: 0 0.938% 0 0.938%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
 }
 #main #sidebar_second {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 220px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 22.917%;
+  margin: 0 1.042% 0 1.042%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 22.813%;
+  *margin: 0 0.938% 0 0.938%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
 }
 #main #postscript_first {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 300px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 31.25%;
+  margin: 0 1.042% 0 1.042%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 31.146%;
+  *margin: 0 0.938% 0 0.938%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
 }
 #main #postscript_second {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 300px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 31.25%;
+  margin: 0 1.042% 0 1.042%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 31.146%;
+  *margin: 0 0.938% 0 0.938%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
 }
 #main #postscript_third {
   display: block;
   position: relative;
   /* default width & margin values */
-  width: 300px;
-  margin: 0 10px 0 10px;
-  	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
-  	 * when determining the full width of the elements. 
-  	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-  	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-  	 * on design.
-     */
+  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  width: 31.25%;
+  margin: 0 1.042% 0 1.042%;
+  /* IE 6 & 7 sub-pixel rounding fix */
+  *width: 31.146%;
+  *margin: 0 0.938% 0 0.938%;
   /* RTL/LTR switching */
   float: left;
-  /* Debugging code to display rendered width & margins */
-  	/*
-  	> .inner {
-  	
-    	&:before {
-      	content: "width: " + $colwidth + ";";
-      	
-    	}
-    	.debug:after {
-    	  content: "margin: " + $colmargin + ";";
-    	}
-  	}
-  	*/
 }
