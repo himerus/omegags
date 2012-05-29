@@ -9,7 +9,7 @@ $dir:           'LTR'; // LTR or RTL
 
 #main {
   @include clearfix();
-  min-width: 720px;
+  min-width: 740px;
   
   #content-wrapper,
   #postscript-wrapper {
@@ -22,7 +22,7 @@ $dir:           'LTR'; // LTR or RTL
 	  
 	  #content-inner {
 	    @include row(6);
-	    @include clearfix();
+	    //@include clearfix();
 	  }
 
 	  #content-top,
@@ -34,19 +34,24 @@ $dir:           'LTR'; // LTR or RTL
 	    
 	    margin-top: 10px;
 	  }
-	  #content-left,
-	  #content-center,
-	  #content-right {
-	    // nested only works in fixed with atm.
-	    @include column(2,6);
+	  #content-left {
+  	  @include column(2,6, 'alpha');
 	    margin-top: 10px;
+	  }
+	  #content-right {
+	    @include column(2,6, 'omega');
+	    margin-top: 10px;
+	  }
+	  #content-center {
+  	  @include column(2,6);
+  	  margin-top: 10px;
 	  }
 	  
 	  #content-left {
-	    @include alpha();
+	    //@include alpha();
 	  }
 	  #content-right {
-	    @include omega();
+	    //@include omega();
 	  }
   }
 

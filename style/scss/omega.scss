@@ -25,14 +25,12 @@ $dir:           'LTR' !default;  // Values should be LTR or RTL
 	@return ($cwidth * $c) + ($gutter * $c); // grid width
 }
 
-@function gratio($c, $cols:$cols) {
-  @return $cols / $c;
-}
-
 // Set $twidth to 100% for a fluid layout
 $twidth: gwidth($cols) !default; // total width
 
-// Utility function to simplify math used in mixins
+/* Utility function to simplify math used in mixins 
+ * Will convert (when needed) widths to a percentage
+ */
 @function calcwidth() {
   @return $twidth / gwidth($cols);
 }
@@ -73,12 +71,17 @@ body {
  */
 
 @mixin row($c:$cols) {
+  /* default row width */
   $rwidth: gwidth($c) * calcwidth();
-
+  /* assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts */
+  @if $twidth == 100% {
+    $rwidth: 100%;
+  }
 	width: $rwidth;
 	display: block;
 	margin: 0 auto;	
-	
+  
+  /* Make sure the row clears itself */
 	@include clearfix();
 }
 
@@ -92,16 +95,49 @@ body {
  *  in the full layout.
  *  This only becomes apparent in fluid and nested layouts
  */
-@mixin column($x, $realcols:$cols) {
+@mixin column($x, $realcols:$cols, $margin: 'normal') {
 	display: block;
 	position: relative;
 	
-  /* original "working" functionality that fails in nested */
-	$colwidth: (gwidth($x) - $gutter) * calcwidth();
-	$colmargin: ($gutter / 2) * calcwidth();
+  /* default width & margin values */
+  $colwidth: (gwidth($x) - $gutter) * calcwidth();
+  $colmargin: ($gutter / 2) * calcwidth();
+	@if $twidth == 100% {
+	  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+	  $colwidth: ((gwidth($x) - $gutter) * calcwidth()) * ($cols / $realcols);
+	  $colmargin: (($gutter / 2) * calcwidth()) * ($cols / $realcols);
+	}
+	
+	$rightmargin: $colmargin;
+	$leftmargin: $colmargin;
 	
 	width: $colwidth;
-	margin: 0 $colmargin;
+	margin: 0 $rightmargin 0 $leftmargin;
+	
+	
+	/* While in a standard grid, it's easy to remove margins for nested grids, in a fluid layout it poses a small problem
+	 * when determining the full width of the elements. 
+	 * For now, we assume that we should take that margin we are removing and put it on the other margin
+	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
+	 * on design.
+   */
+	@if $margin == 'alpha' {
+	  @if $twidth == 100% {
+  	  $rightmargin: $rightmargin * 2;
+	  }
+    margin: 0 $rightmargin 0 0;
+	}
+	@if $margin == 'omega' {
+	  @if $twidth == 100% {
+  	  $leftmargin: $leftmargin * 2;
+	  }
+    margin: 0 0 0 $leftmargin;	
+	}
+	
+	
+	
+	
+	
 	
 	/* RTL/LTR switching */
 	@if $dir == 'LTR' {
@@ -111,7 +147,8 @@ body {
 	  float: right;
 	}
 	
-	/* Debugging code to display rendered width */
+	/* Debugging code to display rendered width & margins */
+	/*
 	> .inner {
 	
   	&:before {
@@ -122,6 +159,7 @@ body {
   	  content: "margin: " + $colmargin + ";";
   	}
 	}
+	*/
 }
 
 
@@ -186,11 +224,4 @@ body {
 	@if $dir == 'RTL' {
 	  margin-left: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth();
 	}
-}
-
-@mixin alpha() {
-  margin-left: 0;
-}
-@mixin omega() {
-  margin-right: 0;
 }
