@@ -1,0 +1,74 @@
+/////////////////
+// Semantic.gs // for SCSS: http://sass-lang.com/
+/////////////////
+
+// Defaults which you can freely override
+$column-width: 60px;
+$gutter-width: 20px;
+$columns: 12;
+
+// Utility function — you should never need to modify this
+@function gridsystem-width($c:$columns) {
+  @return ($column-width + $gutter-width) * $c;
+}
+
+// Set $total-width to 100% for a fluid layout
+$total-width: gridsystem-width($columns);
+
+// Convenience function for calculating the $total-width / $calculated-width.
+@function gridsystem-ratio($c:$columns) {
+  @if ($total-width == 100%) {
+    @return $total-width / gridsystem-width($c);
+  } @else {
+    @return $total-width / gridsystem-width($columns);
+  }
+}
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+  *zoom:1;
+  &:before,
+  &:after {
+    content:"";
+    display:table;
+  }
+  &:after {
+    clear:both;
+  }
+}
+
+//////////
+// GRID //
+//////////
+
+body {
+  width: 100%;
+  @include clearfix();
+}
+
+@mixin row($c:$columns) {
+  display: block;
+  @if ($total-width == 100%) {
+    width: auto;
+    margin: 0 (-.5 * $gutter-width * gridsystem-ratio($c));
+  } @else {
+    width: (gridsystem-width($c) * gridsystem-ratio());
+    margin: 0 (-.5 * $gutter-width * gridsystem-ratio());
+  }
+  @include clearfix();
+}
+
+@mixin column($x, $c:$columns) {
+  display: inline;
+  float: left;
+  width: ((gridsystem-width($x)-$gutter-width) * gridsystem-ratio($c));
+  margin: 0 (.5 * $gutter-width * gridsystem-ratio($c));
+}
+
+@mixin push($offset:1) {
+  margin-left: ((gridsystem-width($offset) - $gutter-width + ($gutter-width*.5)) * gridsystem-ratio());
+}
+
+@mixin pull($offset:1) {
+  margin-right: ((gridsystem-width($offset) - $gutter-width + ($gutter-width*.5)) * gridsystem-ratio());
+}

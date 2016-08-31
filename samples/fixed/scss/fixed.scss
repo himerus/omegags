@@ -1,16 +1,21 @@
-// using Grid defaults
+// Default grid sizing (960px)
+$cwidth:        60px;    // column width
+$gutter:        20px;    // gutter width
+$cols:          12;    // total # of cols
+$dir:           'LTR'; // LTR or RTL
+//$twidth:        100%;  // uncomment to use percentage based layout
 
-@import '../../../style/scss/omega.scss';
+@import 'omegags';
 
 #main {
   @include clearfix();
-  
+
   #content-wrapper,
   #postscript-wrapper {
     @include row(12);
     margin-bottom: 1em;
   }
-  
+
   #content {
 	  @include column(6);
   }
@@ -22,18 +27,16 @@
   #sidebar_second {
   	@include column(3);
   }
-  
+
   #postscript_first {
-    @include column(3);
+    @include column(4);
   }
-  
+
   #postscript_second {
     @include column(4);
-    @include prefix(1);
-    @include suffix(1);
   }
-  
+
   #postscript_third {
-    @include column(3);
+    @include column(4);
   }
 }

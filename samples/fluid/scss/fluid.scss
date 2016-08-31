@@ -1,17 +1,17 @@
 $twidth: 100%;
 
-@import '../../../style/scss/omega.scss';
+@import 'omegags';
 
 #main {
   min-width: 740px;
   @include clearfix();
-  
+
   #content-wrapper,
   #postscript-wrapper {
     @include row(12);
     margin-bottom: 1em;
   }
-  
+
   #content {
 	  @include column(6);
   }
@@ -23,15 +23,15 @@ $twidth: 100%;
   #sidebar_second {
   	@include column(3);
   }
-  
+
   #postscript_first {
     @include column(4);
   }
-  
+
   #postscript_second {
     @include column(4);
   }
-  
+
   #postscript_third {
     @include column(4);
   }
