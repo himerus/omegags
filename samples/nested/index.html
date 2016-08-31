@@ -2,185 +2,194 @@
 
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>The Omega Grid System | Responsive Example</title>
+    <meta charset="utf-8"/>
+    <title>The Omega Grid System | Responsive Example</title>
 
-  <!-- Stylesheets for Demo Flair -->
-	<link rel="stylesheet" href="../../demo/css/normalize.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="../../demo/css/demo.css" type="text/css" media="screen" />
-	<!-- JavaScripts for Demo Flair-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="../../demo/bootstrap/js/bootstrap-dropdown.js"></script>
-	<!-- Stylesheets for Layout -->
-	<link rel="stylesheet" href="css/nested.css" type="text/css" media="screen" />
-	
-	
-  <meta content="yes" name="apple-mobile-web-app-capable">
-  <meta http-equiv="cleartype" content ="on">
-  <meta http-equiv="X-UA-Compatible" content ="IE =edge, chrome =1">
-  
-	<!--[if lt IE 9]>
-	  <script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    <!-- Stylesheets for Demo Flair -->
+    <link rel="stylesheet" href="../../demo/css/normalize.css" type="text/css"
+          media="screen"/>
+    <link rel="stylesheet" href="../../demo/css/demo.css" type="text/css"
+          media="screen"/>
+    <!-- JavaScripts for Demo Flair-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="../../demo/bootstrap/js/bootstrap-dropdown.js"></script>
+    <!-- Stylesheets for Layout -->
+    <link rel="stylesheet" href="css/nested.css" type="text/css"
+          media="screen"/>
+
+
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE =edge, chrome =1">
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript"
+            src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
-	
-	<!-- Header (something outside the grid, therefore obviously full width with no restrictions. -->
-	<!-- Header section in demo for navigation purposes only, not part of layout structure -->
-	<header id="top">
-		<div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
 
-          <a class="brand" href="../../">Omega.gs</a>
-          <div class="nav-collapse">
-    				<ul class="nav">
-    				  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b> Examples</a>
-    				    <ul class="dropdown-menu">
-    				      <li><a href="../adaptive">Adaptive</a></li>
-    				      <li><a href="../responsive">Responsive</a></li>
-    				      <li><a href="../nested">Nested Regions</a></li>
-    				      <li><a href="../fixed">Fixed Width Grid (960px)</a></li>
-    				      <li><a href="../fluid">Fluid Width Grid</a></li>
-    				      <li><a href="../pushpull">Push & Pull</a></li>
-                  <li><a href="../prefixsuffix">Prefix & Suffix</a></li>
-                  <li><a href="../rtl">RTL Demo</a></li>
-    				    </ul>
-    				  </li>
-    				</ul>
-    				<ul class="nav pull-right">
-    				  <li><a href="https://github.com/ThemeGeeks/omega.gs">GitHub</a></li>
-    				</ul>
-    			</div>
+<!-- Header (something outside the grid, therefore obviously full width with no restrictions. -->
+<!-- Header section in demo for navigation purposes only, not part of layout structure -->
+<header id="top">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse"
+                   data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <a class="brand" href="../../">Omega.gs</a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                                data-toggle="dropdown"><b
+                                class="caret"></b> Examples</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../adaptive">Adaptive</a></li>
+                                <li><a href="../responsive">Responsive</a></li>
+                                <li><a href="../nested">Nested Regions</a></li>
+                                <li><a href="../fixed">Fixed Width Grid
+                                    (960px)</a></li>
+                                <li><a href="../fluid">Fluid Width Grid</a></li>
+                                <li><a href="../pushpull">Push & Pull</a></li>
+                                <li><a href="../prefixsuffix">Prefix &
+                                    Suffix</a></li>
+                                <li><a href="../rtl">RTL Demo</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li><a href="https://github.com/ThemeGeeks/omega.gs">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-	</header>
-  <!-- End navigation/demo header -->
-  
-  <!-- Start Primary Demonstration Layout Structure -->
-  <section id="main">
+</header>
+<!-- End navigation/demo header -->
+
+<!-- Start Primary Demonstration Layout Structure -->
+<section id="main">
     <div id="main-debug"></div>
-  	<div id="content-wrapper"><!-- main content "zone" -->
-    	<section id="content">
-    	  <h2>Main Content</h2>
-        
-        <section id="content-top">
-          <h2>Content Top</h2>
-          <div class="inner">
-            <div class="debug">
-              
-            </div><!-- / debug container -->
-          </div><!-- / inner container -->
-        </section>
-        
-        <section id="content-inner">
-        <section id="content-left">
-          <h2>Left</h2>
-          <div class="inner">
-            <div class="debug">
-              
-            </div><!-- / debug container -->
-          </div><!-- / inner container -->
+    <div id="content-wrapper"><!-- main content "zone" -->
+        <section id="content">
+            <h2>Main Content</h2>
+
+            <section id="content-top">
+                <h2>Content Top</h2>
+                <div class="inner">
+                    <div class="debug">
+
+                    </div><!-- / debug container -->
+                </div><!-- / inner container -->
+            </section>
+
+            <section id="content-inner">
+                <section id="content-left">
+                    <h2>Left</h2>
+                    <div class="inner">
+                        <div class="debug">
+
+                        </div><!-- / debug container -->
+                    </div><!-- / inner container -->
+
+                </section>
+
+                <section id="content-center">
+                    <h2>Center</h2>
+                    <div class="inner">
+                        <div class="debug">
+
+                        </div><!-- / debug container -->
+                    </div><!-- / inner container -->
+
+                </section>
+
+                <section id="content-right">
+                    <h2>Right</h2>
+                    <div class="inner">
+                        <div class="debug">
+
+                        </div><!-- / debug container -->
+                    </div><!-- / inner container -->
+
+                </section>
+
+            </section>
+
+            <section id="content-bottom">
+                <h2>Content Bottom</h2>
+                <div class="inner">
+                    <div class="debug">
+
+                    </div><!-- / debug container -->
+                </div><!-- / inner container -->
+
+            </section>
+
+
+            <div class="inner">
+                <div class="debug">
+
+                </div><!-- / debug container -->
+            </div><!-- / inner container -->
+
 
         </section>
-        
-        <section id="content-center">
-          <h2>Center</h2>
-          <div class="inner">
-            <div class="debug">
-              
-            </div><!-- / debug container -->
-          </div><!-- / inner container -->
 
-        </section>
-        
-        <section id="content-right">
-          <h2>Right</h2>
-          <div class="inner">
-            <div class="debug">
-              
-            </div><!-- / debug container -->
-          </div><!-- / inner container -->
+        <section id="sidebar_first">
+            <h2>Sidebar First</h2>
+            <div class="inner">
+                <div class="debug">
 
+                </div><!-- / debug container -->
+            </div><!-- / inner container -->
         </section>
-        
-        </section>
-        
-        <section id="content-bottom">
-          <h2>Content Bottom</h2>
-          <div class="inner">
-            <div class="debug">
-              
-            </div><!-- / debug container -->
-          </div><!-- / inner container -->
 
+        <section id="sidebar_second">
+            <h2>Sidebar Second</h2>
+            <div class="inner">
+                <div class="debug">
+
+                </div><!-- / debug container -->
+            </div><!-- / inner container -->
         </section>
-        
-        
-        
-        <div class="inner">
-          <div class="debug">
-            
-          </div><!-- / debug container -->
-        </div><!-- / inner container -->
-        
-        
-    	</section>
-      
-    	<section id="sidebar_first">
-    	  <h2>Sidebar First</h2>
-    		<div class="inner">
-          <div class="debug">
-            
-          </div><!-- / debug container -->
-        </div><!-- / inner container -->
-    	</section>
-    	
-    	<section id="sidebar_second">
-    	  <h2>Sidebar Second</h2>
-    		<div class="inner">
-          <div class="debug">
-            
-          </div><!-- / debug container -->
-        </div><!-- / inner container -->
-    	</section>
-  	</div><!-- / main content "zone" -->
-  	
-  	<div id="postscript-wrapper"><!-- main postscript "zone" -->
-    	<section id="postscript_first">
-    	  <h2>Postscript First</h2>
-    		<div class="inner">
-          <div class="debug">
-            
-          </div><!-- / debug container -->
-        </div><!-- / inner container -->
-    	</section>
-    
-    	<section id="postscript_second">
-    	  <h2>Postscript Second</h2>
-    		<div class="inner">
-          <div class="debug">
-            
-          </div>
-        </div>
-    	</section>
-    	
-    	<section id="postscript_third">
-    	  <h2>Postscript Third</h2>
-    		<div class="inner">
-          <div class="debug">
-            
-          </div><!-- / debug container -->
-        </div><!-- / inner container -->
-    	</section>
-  	</div><!-- / main postscript "zone" -->
-	</section>
+    </div><!-- / main content "zone" -->
+
+    <div id="postscript-wrapper"><!-- main postscript "zone" -->
+        <section id="postscript_first">
+            <h2>Postscript First</h2>
+            <div class="inner">
+                <div class="debug">
+
+                </div><!-- / debug container -->
+            </div><!-- / inner container -->
+        </section>
+
+        <section id="postscript_second">
+            <h2>Postscript Second</h2>
+            <div class="inner">
+                <div class="debug">
+
+                </div>
+            </div>
+        </section>
+
+        <section id="postscript_third">
+            <h2>Postscript Third</h2>
+            <div class="inner">
+                <div class="debug">
+
+                </div><!-- / debug container -->
+            </div><!-- / inner container -->
+        </section>
+    </div><!-- / main postscript "zone" -->
+</section>
 </body>
 </html>
