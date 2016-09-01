@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
     LICENSE.md
     package.json
     README.md
-    zen-grids.gemspec
+    omegags.gemspec
   )
 end
