@@ -1,0 +1,27 @@
+{
+  "name": "omegags",
+  "description": "Omega.gs is a responsive, flexible grid framework.",
+  "main": [
+    "style/scss/_omegags.scss"
+  ],
+  "authors": [
+    "Jake Strawn <jake.strawn@gmail.com> (http://github.com/himerus)"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "sass",
+    "layout",
+    "grid",
+    "rwd",
+    "responsive-web-design"
+  ],
+  "homepage": "https://github.com/himerus/omegags",
+  "ignore": [
+    "**/.*",
+    "lib",
+    "node_modules",
+    "sache.json",
+    "test",
+    "omegags.gemspec"
+  ]
+}

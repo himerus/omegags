@@ -1,9 +1,9 @@
 // Default grid sizing (960px)
-$omegags-column-width:        60px;    // column width
-$omegags-gutter-width:        20px;    // gutter width
-$omegags-column-count:          12;    // total # of cols
-$omegags-direction:           'LTR'; // LTR or RTL
-//$omegags-total-width:        100%;  // uncomment to use percentage based layout
+$omegags-column-width:          60px; // column width
+$omegags-gutter-width:          20px; // gutter width
+$omegags-column-count:          12; // total # of cols
+$omegags-direction:             'LTR'; // LTR or RTL
+//$omegags-total-width:         100%;  // uncomment to use percentage based layout
 
 @import 'omegags';
 
@@ -17,15 +17,15 @@ $omegags-direction:           'LTR'; // LTR or RTL
   }
 
   .content {
-	  @include column(6);
+    @include column(6);
   }
 
   .sidebar-first {
-  	@include column(3);
+    @include column(3);
   }
 
   .sidebar-second {
-  	@include column(3);
+    @include column(3);
   }
 
   .postscript-first {

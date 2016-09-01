@@ -1,7 +1,7 @@
 {
   "name": "omegags",
   "version": "1.0.0",
-  "license": "GPL-2.0",
+  "license": "GPL-3.0",
   "description": "Omega.gs is a responsive, flexible grid framework.",
   "homepage": "https://github.com/himerus/omegags",
   "bugs": {
