@@ -52,19 +52,19 @@
 
 
 // some flair just for visual styling of the demo page(s)
-#main {
-  
-  #content,
-  #sidebar_first,
-  #sidebar_second,
-  #postscript_first,
-  #postscript_second,
-  #postscript_third {
+.main {
+
+  .content,
+  .sidebar-first,
+  .sidebar-second,
+  .postscript-first,
+  .postscript-second,
+  .postscript-third {
     .border-radius(5px);
     .box-shadow(0 3px 7px rgba(0,0,0,0.3));
     #gradient > .vertical(@grayLighter, @white);
-    min-height: 220px;    
-    
+    min-height: 220px;
+
     h2 {
       font-size: 18px;
       .border-radius(5px 5px 0 0);
@@ -76,16 +76,16 @@
       padding: 10px 15px;
     }
   }
-  
+
   /* Nested Regions Demo */
-  #content-top,
-  #content-bottom,
-  #content-left,
-  #content-center,
-  #content-right {
+  .content-top,
+  .content-bottom,
+  .content-left,
+  .content-center,
+  .content-right {
     min-height: 120px;
     #gradient > .vertical(@grayLighter, @white);
-    
+
     h2 {
       font-size: 16px;
       .border-radius(0);

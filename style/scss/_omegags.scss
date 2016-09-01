@@ -1,35 +1,52 @@
 // SAMPLE GRID SIZES ###########################
 // Use these, or your own calculations for a fixed width grid.
 // 1200px Grid =========
-// $cwidth: 80; $gutter: 20; $cols: 12;
-// $cwidth: 55; $gutter: 20; $cols: 16;
+
+// $omegags-column-width: 80;
+// $omegags-gutter-width: 20;
+// $omegags-column-count: 12;
+
+// $omegags-column-width: 55;
+// $omegags-gutter-width: 20;
+// $omegags-column-count: 16;
 //
 // 960px Grid =========
-// $cwidth: 60; $gutter: 20; $cols: 12;
-// $cwidth: 40; $gutter: 20; $cols: 16;
+// $omegags-column-width: 60;
+// $omegags-gutter-width: 20;
+// $omegags-column-count: 12;
+
+// $omegags-column-width: 40;
+// $omegags-gutter-width: 20;
+// $omegags-column-count: 16;
+
 // Fluid Grid =========
-// $cwidth: 60; $gutter: 20; $cols: 12;
-// $cwidth: 40; $gutter: 20; $cols: 16;
+// $omegags-column-width: 60;
+// $omegags-gutter-width: 20;
+// $omegags-column-count: 12;
+
+// $omegags-column-width: 40;
+// $omegags-gutter-width: 20;
+// $omegags-column-count: 16;
 
 // Default grid sizing (960px)
-$cwidth: 60px !default; // column width
-$gutter: 20px !default; // gutter width
-$cols: 12 !default; // total # of cols
-$dir: 'LTR' !default; // Values should be LTR or RTL
+$omegags-column-width: 60px !default; // column width
+$omegags-gutter-width: 20px !default; // gutter width
+$omegags-column-count: 12 !default; // total # of cols
+$omegags-direction: 'LTR' !default; // Values should be LTR or RTL
 
 // Utility Width Variable — you should never need to modify these
-@function gwidth($c:$cols) {
-  //@return ($cwidth * $c) + ($gutter * $c); // grid width
-  @return ($cwidth + $gutter) * $c;
+@function gwidth($c:$omegags-column-count) {
+  //@return ($omegags-column-width * $c) + ($omegags-gutter-width * $c); // grid width
+  @return ($omegags-column-width + $omegags-gutter-width) * $c;
 }
 
-// Set $twidth to 100% for a fluid layout
-$twidth: gwidth($cols) !default; // total width
+// Set $omegags-total-width to 100% for a fluid layout
+$omegags-total-width: gwidth($omegags-column-count) !default; // total width
 
 // Utility function to simplify math used in mixins
 // Will convert (when needed) widths to a percentage
-@function calcwidth($cols) {
-  @return $twidth / gwidth($cols);
+@function calcwidth($omegags-column-count) {
+  @return $omegags-total-width / gwidth($omegags-column-count);
 }
 
 // Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7.
@@ -56,18 +73,18 @@ body {
   @include clearfix();
   // The min-width is needed so items outside the grid stay the correct width if horizontal scroll
   // is active so they don't scale to the browser while grid items overflow
-  min-width: $twidth;
+  min-width: $omegags-total-width;
   width: 100%;
 }
 
-@mixin row($c:$cols) {
+@mixin row($c:$omegags-column-count) {
   display: block;
   margin: 0 auto;
 
   // default row width
   $rwidth: (gwidth($c) * calcwidth($c));
   // assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts
-  @if $twidth == 100% {
+  @if $omegags-total-width == 100% {
     $rwidth: 100%;
   }
   width: $rwidth;
@@ -91,17 +108,17 @@ body {
 
 // Essentially, I don't recommend using the column() mixin for nested columns inside a fluid layout
 
-@mixin column($x, $realcols:$cols, $margin: 'normal') {
+@mixin column($x, $realcols:$omegags-column-count, $margin: 'normal') {
   display: block;
   position: relative;
   clear: none;
   // default width & margin values
-  $colwidth: ((gwidth($x) - $gutter) * calcwidth($realcols));
-  $colmargin: ($gutter / 2) * calcwidth($realcols);
-  @if $twidth == 100% {
+  $colwidth: ((gwidth($x) - $omegags-gutter-width) * calcwidth($realcols));
+  $colmargin: ($omegags-gutter-width / 2) * calcwidth($realcols);
+  @if $omegags-total-width == 100% {
     // for fluid, the following is needed for nested columns to determine the true width & margin */
-    $colwidth: ((gwidth($x) - $gutter) * calcwidth($realcols)) * ($cols / $realcols);
-    $colmargin: (($gutter / 2) * calcwidth($realcols)) * ($cols / $realcols);
+    $colwidth: ((gwidth($x) - $omegags-gutter-width) * calcwidth($realcols)) * ($omegags-column-count / $realcols);
+    $colmargin: (($omegags-gutter-width / 2) * calcwidth($realcols)) * ($omegags-column-count / $realcols);
   }
 
   $rightmargin: $colmargin;
@@ -119,14 +136,14 @@ body {
   //*margin-left: $leftmargin - $correction;
 
   @if $margin == 'alpha' {
-    @if $twidth == 100% {
+    @if $omegags-total-width == 100% {
       $rightmargin: $rightmargin * 2;
     }
     //margin: 0 $rightmargin 0 0;
     margin-right: $rightmargin;
   }
   @if $margin == 'omega' {
-    @if $twidth == 100% {
+    @if $omegags-total-width == 100% {
       $leftmargin: $leftmargin * 2;
     }
     //margin: 0 0 0 $leftmargin;
@@ -134,53 +151,53 @@ body {
   }
 
   // RTL/LTR switching
-  @if $dir == 'LTR' {
+  @if $omegags-direction == 'LTR' {
     float: left;
   }
-  @if $dir == 'RTL' {
+  @if $omegags-direction == 'RTL' {
     float: right;
   }
 }
 
 // Content First push/pull effects
 @mixin push($x:1) {
-  @if $dir == 'LTR' {
-    left: ($gutter + $cwidth) * calcwidth($cols) * $x;
+  @if $omegags-direction == 'LTR' {
+    left: ($omegags-gutter-width + $omegags-column-width) * calcwidth($omegags-column-count) * $x;
     right: auto;
   }
-  @if $dir == 'RTL' {
-    right: ($gutter + $cwidth) * calcwidth($cols) * $x;
+  @if $omegags-direction == 'RTL' {
+    right: ($omegags-gutter-width + $omegags-column-width) * calcwidth($omegags-column-count) * $x;
     left: auto;
   }
 }
 
 @mixin pull($x:1) {
-  @if $dir == 'LTR' {
-    right: ($gutter + $cwidth) * calcwidth($cols) * $x;
+  @if $omegags-direction == 'LTR' {
+    right: ($omegags-gutter-width + $omegags-column-width) * calcwidth($omegags-column-count) * $x;
     left: auto;
   }
-  @if $dir == 'RTL' {
-    left: ($gutter + $cwidth) * calcwidth($cols) * $x;
+  @if $omegags-direction == 'RTL' {
+    left: ($omegags-gutter-width + $omegags-column-width) * calcwidth($omegags-column-count) * $x;
     right: auto;
   }
 }
 
 // Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space
 @mixin prefix($x:1) {
-  @if $dir == 'LTR' {
-    margin-left: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth($cols);
+  @if $omegags-direction == 'LTR' {
+    margin-left: ((($omegags-gutter-width + $omegags-column-width) * $x) + $omegags-gutter-width / 2) * calcwidth($omegags-column-count);
   }
-  @if $dir == 'RTL' {
-    margin-right: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth($cols);
+  @if $omegags-direction == 'RTL' {
+    margin-right: ((($omegags-gutter-width + $omegags-column-width) * $x) + $omegags-gutter-width / 2) * calcwidth($omegags-column-count);
   }
 }
 
 @mixin suffix($x:1) {
-  @if $dir == 'LTR' {
-    margin-right: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth($cols);
+  @if $omegags-direction == 'LTR' {
+    margin-right: ((($omegags-gutter-width + $omegags-column-width) * $x) + $omegags-gutter-width / 2) * calcwidth($omegags-column-count);
   }
-  @if $dir == 'RTL' {
-    margin-left: ((($gutter + $cwidth) * $x) + $gutter / 2) * calcwidth($cols);
+  @if $omegags-direction == 'RTL' {
+    margin-left: ((($omegags-gutter-width + $omegags-column-width) * $x) + $omegags-gutter-width / 2) * calcwidth($omegags-column-count);
   }
 }
 

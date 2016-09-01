@@ -1,33 +1,33 @@
 // Remove the definition below for a pixel-based layout
-$twidth: 100%;
+$omegags-total-width: 100%;
 
 @import 'omegags';
 
 // Main mobile-first layout
-#main {
+.main {
   @include clearfix();
   margin: 0 auto;
 
-  #content-wrapper,
-  #postscript-wrapper {
+  .content-wrapper,
+  .postscript-wrapper {
     @include row(12);
     margin-bottom: 1em;
   }
 
-  #content,
-  #sidebar_first,
-  #sidebar_second,
-  #postscript_first {
+  .content,
+  .sidebar-first,
+  .sidebar-second,
+  .postscript-first {
   	@include column(12);
   	margin-bottom: 1em;
   }
 
-  #content {
+  .content {
     @include column(12);
     margin-bottom: 1em;
   }
-  #postscript_second,
-  #postscript_third {
+  .postscript-second,
+  .postscript-third {
     @include column(6);
   }
 }
@@ -36,26 +36,26 @@ $twidth: 100%;
 // landscape mobile
 @media all and (min-width: 480px) and (max-width: 719px) {
   /* (480px) */
-  $cwidth: 70px;
-  $gutter: 10px;
-  $cols: 6;
-  $twidth: gwidth($cols);
+  $omegags-column-width: 70px;
+  $omegags-gutter-width: 10px;
+  $omegags-column-count: 6;
+  $omegags-total-width: gwidth($omegags-column-count);
 
-  #main {
-    #content-wrapper,
-    #postscript-wrapper {
+  .main {
+    .content-wrapper,
+    .postscript-wrapper {
       @include row(6);
       margin-bottom: 1em;
     }
-  	#content {
+  	.content {
   	  @include column(6);
   	  margin-bottom: 1em;
     }
-    #sidebar_first {
+    .sidebar-first {
     	@include column(3);
     	@include push(3);
     }
-    #sidebar_second {
+    .sidebar-second {
     	@include column(3);
     	@include pull(3);
     }
@@ -65,30 +65,30 @@ $twidth: 100%;
 // portrait tablet/small screen
 @media all and (min-width: 720px) and (max-width: 959px) {
   /* (720px) */
-  $cwidth: 40px;
-  $gutter: 20px;
-  $cols: 12;
-  $twidth: gwidth($cols);
+  $omegags-column-width: 40px;
+  $omegags-gutter-width: 20px;
+  $omegags-column-count: 12;
+  $omegags-total-width: gwidth($omegags-column-count);
 
-  #main {
-    #content-wrapper,
-    #postscript-wrapper {
+  .main {
+    .content-wrapper,
+    .postscript-wrapper {
       @include row(12);
       margin-bottom: 1em;
     }
-  	#content {
+  	.content {
   	  @include column(9);
   	  margin-bottom: 1em;
     }
-    #sidebar_first {
+    .sidebar-first {
     	@include column(3);
     }
-    #sidebar_second {
+    .sidebar-second {
     	@include column(12);
     }
-    #postscript_first,
-    #postscript_second,
-    #postscript_third {
+    .postscript-first,
+    .postscript-second,
+    .postscript-third {
       @include column(4);
     }
   }
@@ -97,42 +97,42 @@ $twidth: 100%;
 // larger screen
 @media all and (min-width: 960px) and (max-width: 1199px) {
   /* (960px) */
-  $cwidth: 60px;
-  $gutter: 20px;
-  $cols: 12;
-  $twidth: gwidth($cols);
+  $omegags-column-width: 60px;
+  $omegags-gutter-width: 20px;
+  $omegags-column-count: 12;
+  $omegags-total-width: gwidth($omegags-column-count);
 
-  #main {
-    #content-wrapper,
-    #postscript-wrapper {
+  .main {
+    .content-wrapper,
+    .postscript-wrapper {
       @include row(12);
       margin-bottom: 1em;
     }
 
-  	#content {
+  	.content {
   	  @include column(6);
   	  @include push(6);
     }
 
-    #sidebar_first {
+    .sidebar-first {
     	@include column(3);
     	@include pull(6);
     }
 
-    #sidebar_second {
+    .sidebar-second {
     	@include column(3);
     	@include pull(6);
     }
 
-    #postscript_first {
+    .postscript-first {
       @include column(6);
     }
 
-    #postscript_second {
+    .postscript-second {
       @include column(3);
     }
 
-    #postscript_third {
+    .postscript-third {
       @include column(3);
     }
   }
@@ -141,41 +141,41 @@ $twidth: 100%;
 // larger screen
 @media all and (min-width: 1200px) {
   /* (1200px) */
-  $cwidth: 80px;
-  $gutter: 20px;
-  $cols: 12;
-  $twidth: gwidth($cols);
+  $omegags-column-width: 80px;
+  $omegags-gutter-width: 20px;
+  $omegags-column-count: 12;
+  $omegags-total-width: gwidth($omegags-column-count);
 
-  #main {
+  .main {
 
-    #content-wrapper,
-    #postscript-wrapper {
+    .content-wrapper,
+    .postscript-wrapper {
       @include row(12);
       margin-bottom: 1em;
     }
-  	#content {
+  	.content {
   	  @include column(6);
   	  @include push(3);
     }
 
-    #sidebar_first {
+    .sidebar-first {
     	@include column(3);
     	@include pull(6);
     }
 
-    #sidebar_second {
+    .sidebar-second {
     	@include column(3);
     }
 
-    #postscript_first {
+    .postscript-first {
       @include column(4);
     }
 
-    #postscript_second {
+    .postscript-second {
       @include column(4);
     }
 
-    #postscript_third {
+    .postscript-third {
       @include column(4);
     }
   }

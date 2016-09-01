@@ -4,12 +4,12 @@
 
 // Defaults which you can freely override
 $column-width: 60px;
-$gutter-width: 20px;
+$omegags-gutter-width-width: 20px;
 $columns: 12;
 
 // Utility function — you should never need to modify this
 @function gridsystem-width($c:$columns) {
-  @return ($column-width + $gutter-width) * $c;
+  @return ($column-width + $omegags-gutter-width-width) * $c;
 }
 
 // Set $total-width to 100% for a fluid layout
@@ -50,10 +50,10 @@ body {
   display: block;
   @if ($total-width == 100%) {
     width: auto;
-    margin: 0 (-.5 * $gutter-width * gridsystem-ratio($c));
+    margin: 0 (-.5 * $omegags-gutter-width-width * gridsystem-ratio($c));
   } @else {
     width: (gridsystem-width($c) * gridsystem-ratio());
-    margin: 0 (-.5 * $gutter-width * gridsystem-ratio());
+    margin: 0 (-.5 * $omegags-gutter-width-width * gridsystem-ratio());
   }
   @include clearfix();
 }
@@ -61,14 +61,14 @@ body {
 @mixin column($x, $c:$columns) {
   display: inline;
   float: left;
-  width: ((gridsystem-width($x)-$gutter-width) * gridsystem-ratio($c));
-  margin: 0 (.5 * $gutter-width * gridsystem-ratio($c));
+  width: ((gridsystem-width($x)-$omegags-gutter-width-width) * gridsystem-ratio($c));
+  margin: 0 (.5 * $omegags-gutter-width-width * gridsystem-ratio($c));
 }
 
 @mixin push($offset:1) {
-  margin-left: ((gridsystem-width($offset) - $gutter-width + ($gutter-width*.5)) * gridsystem-ratio());
+  margin-left: ((gridsystem-width($offset) - $omegags-gutter-width-width + ($omegags-gutter-width-width*.5)) * gridsystem-ratio());
 }
 
 @mixin pull($offset:1) {
-  margin-right: ((gridsystem-width($offset) - $gutter-width + ($gutter-width*.5)) * gridsystem-ratio());
+  margin-right: ((gridsystem-width($offset) - $omegags-gutter-width-width + ($omegags-gutter-width-width*.5)) * gridsystem-ratio());
 }

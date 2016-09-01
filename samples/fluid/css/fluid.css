@@ -1,161 +1,98 @@
-/*
- * SAMPLE GRID SIZES ###########################
- * Use these, or your own calculations for a fixed width grid.
- * 1200px Grid =========
- *   $cwidth: 80; $gutter: 20; $cols: 12; 
- *   $cwidth: 55; $gutter: 20; $cols: 16;
- *
- * 960px Grid =========
- *   $cwidth: 60; $gutter: 20; $cols: 12; 
- *   $cwidth: 40; $gutter: 20; $cols: 16;
- * Fluid Grid =========
- *   $cwidth: 60; $gutter: 20; $cols: 12; 
- *   $cwidth: 40; $gutter: 20; $cols: 16;
- */
-/* Utility function to simplify math used in mixins 
- * Will convert (when needed) widths to a percentage
- */
-/* Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. 
- * See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
- */
 body {
-  width: 100%;
-  min-width: 100%;
   *zoom: 1;
+  min-width: 100%;
+  width: 100%;
 }
 body:before, body:after {
-  content: "";
+  content: '';
   display: table;
 }
 body:after {
   clear: both;
 }
 
-/**
- *  You have the ability to specify the default number of columns used in the grid here
- *  This recalculates the available space in a "row" so that the grid widths are standardized
- *  in the full layout.
- *  This only becomes apparent in fluid and nested layouts
- */
-/* While in a standard, fixed-width grid, it's easy to remove margins for nested grids, in a fluid layout it 
-	 * poses a small problem when determining the full width of the elements. 
-	 * For now, we assume that we should take that margin we are removing and put it on the other margin
-	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
-	 * on design.
-	 *
-	 * Essentially, I don't recommend using the column() mixin for nested columns inside a fluid layout
-   */
-/* Content First push/pull effects */
-/* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
-#main {
+.main {
   min-width: 740px;
   *zoom: 1;
 }
-#main:before, #main:after {
-  content: "";
+.main:before, .main:after {
+  content: '';
   display: table;
 }
-#main:after {
+.main:after {
   clear: both;
 }
-#main #content-wrapper,
-#main #postscript-wrapper {
+.main .content-wrapper,
+.main .postscript-wrapper {
   display: block;
   margin: 0 auto;
-  /* default row width */
-  /* assuming the layout is fluid, just skip calculations and make the row 100% width for sanity in nested layouts */
   width: 100%;
-  /* IE 6 & 7 sub-pixel rounding fix */
-  *width: 99.896%;
-  /* Make sure the row clears itself */
   *zoom: 1;
   margin-bottom: 1em;
 }
-#main #content-wrapper:before, #main #content-wrapper:after,
-#main #postscript-wrapper:before,
-#main #postscript-wrapper:after {
-  content: "";
+.main .content-wrapper:before, .main .content-wrapper:after,
+.main .postscript-wrapper:before,
+.main .postscript-wrapper:after {
+  content: '';
   display: table;
 }
-#main #content-wrapper:after,
-#main #postscript-wrapper:after {
+.main .content-wrapper:after,
+.main .postscript-wrapper:after {
   clear: both;
 }
-#main #content {
+.main .content {
   display: block;
   position: relative;
-  /* default width & margin values */
-  /* for fluid, the following is needed for nested columns to determine the true width & margin */
-  width: 47.917%;
-  margin: 0 1.042% 0 1.042%;
-  /* IE 6 & 7 sub-pixel rounding fix */
-  *width: 47.813%;
-  *margin: 0 0.938% 0 0.938%;
-  /* RTL/LTR switching */
+  clear: none;
+  width: 47.91667%;
+  margin-right: 1.04167%;
+  margin-left: 1.04167%;
   float: left;
 }
-#main #sidebar_first {
+.main .sidebar-first {
   display: block;
   position: relative;
-  /* default width & margin values */
-  /* for fluid, the following is needed for nested columns to determine the true width & margin */
-  width: 22.917%;
-  margin: 0 1.042% 0 1.042%;
-  /* IE 6 & 7 sub-pixel rounding fix */
-  *width: 22.813%;
-  *margin: 0 0.938% 0 0.938%;
-  /* RTL/LTR switching */
+  clear: none;
+  width: 22.91667%;
+  margin-right: 1.04167%;
+  margin-left: 1.04167%;
   float: left;
 }
-#main #sidebar_second {
+.main .sidebar-second {
   display: block;
   position: relative;
-  /* default width & margin values */
-  /* for fluid, the following is needed for nested columns to determine the true width & margin */
-  width: 22.917%;
-  margin: 0 1.042% 0 1.042%;
-  /* IE 6 & 7 sub-pixel rounding fix */
-  *width: 22.813%;
-  *margin: 0 0.938% 0 0.938%;
-  /* RTL/LTR switching */
+  clear: none;
+  width: 22.91667%;
+  margin-right: 1.04167%;
+  margin-left: 1.04167%;
   float: left;
 }
-#main #postscript_first {
+.main .postscript-first {
   display: block;
   position: relative;
-  /* default width & margin values */
-  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  clear: none;
   width: 31.25%;
-  margin: 0 1.042% 0 1.042%;
-  /* IE 6 & 7 sub-pixel rounding fix */
-  *width: 31.146%;
-  *margin: 0 0.938% 0 0.938%;
-  /* RTL/LTR switching */
+  margin-right: 1.04167%;
+  margin-left: 1.04167%;
   float: left;
 }
-#main #postscript_second {
+.main .postscript-second {
   display: block;
   position: relative;
-  /* default width & margin values */
-  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  clear: none;
   width: 31.25%;
-  margin: 0 1.042% 0 1.042%;
-  /* IE 6 & 7 sub-pixel rounding fix */
-  *width: 31.146%;
-  *margin: 0 0.938% 0 0.938%;
-  /* RTL/LTR switching */
+  margin-right: 1.04167%;
+  margin-left: 1.04167%;
   float: left;
 }
-#main #postscript_third {
+.main .postscript-third {
   display: block;
   position: relative;
-  /* default width & margin values */
-  /* for fluid, the following is needed for nested columns to determine the true width & margin */
+  clear: none;
   width: 31.25%;
-  margin: 0 1.042% 0 1.042%;
-  /* IE 6 & 7 sub-pixel rounding fix */
-  *width: 31.146%;
-  *margin: 0 0.938% 0 0.938%;
-  /* RTL/LTR switching */
+  margin-right: 1.04167%;
+  margin-left: 1.04167%;
   float: left;
 }
+
+/*# sourceMappingURL=fluid.css.map */

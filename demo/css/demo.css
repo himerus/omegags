@@ -3877,16 +3877,16 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
-#main {
+.main {
   /* Nested Regions Demo */
 
 }
-#main #content,
-#main #sidebar_first,
-#main #sidebar_second,
-#main #postscript_first,
-#main #postscript_second,
-#main #postscript_third {
+.main .content,
+.main .sidebar-first,
+.main .sidebar-second,
+.main .postscript-first,
+.main .postscript-second,
+.main .postscript-third {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -3904,12 +3904,12 @@ a.badge:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
   min-height: 220px;
 }
-#main #content h2,
-#main #sidebar_first h2,
-#main #sidebar_second h2,
-#main #postscript_first h2,
-#main #postscript_second h2,
-#main #postscript_third h2 {
+.main .content h2,
+.main .sidebar-first h2,
+.main .sidebar-second h2,
+.main .postscript-first h2,
+.main .postscript-second h2,
+.main .postscript-third h2 {
   font-size: 18px;
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
@@ -3926,19 +3926,19 @@ a.badge:hover {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#333333', GradientType=0);
 }
-#main #content .inner,
-#main #sidebar_first .inner,
-#main #sidebar_second .inner,
-#main #postscript_first .inner,
-#main #postscript_second .inner,
-#main #postscript_third .inner {
+.main .content .inner,
+.main .sidebar-first .inner,
+.main .sidebar-second .inner,
+.main .postscript-first .inner,
+.main .postscript-second .inner,
+.main .postscript-third .inner {
   padding: 10px 15px;
 }
-#main #content-top,
-#main #content-bottom,
-#main #content-left,
-#main #content-center,
-#main #content-right {
+.main .content-top,
+.main .content-bottom,
+.main .content-left,
+.main .content-center,
+.main .content-right {
   min-height: 120px;
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
@@ -3950,11 +3950,11 @@ a.badge:hover {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
 }
-#main #content-top h2,
-#main #content-bottom h2,
-#main #content-left h2,
-#main #content-center h2,
-#main #content-right h2 {
+.main .content-top h2,
+.main .content-bottom h2,
+.main .content-left h2,
+.main .content-center h2,
+.main .content-right h2 {
   font-size: 16px;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -3971,11 +3971,11 @@ a.badge:hover {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#555555', GradientType=0);
 }
-#main #content-top .inner,
-#main #content-bottom .inner,
-#main #content-left .inner,
-#main #content-center .inner,
-#main #content-right .inner {
+.main .content-top .inner,
+.main .content-bottom .inner,
+.main .content-left .inner,
+.main .content-center .inner,
+.main .content-right .inner {
   padding: 10px 15px;
 }
 .navbar-inner {

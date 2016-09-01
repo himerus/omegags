@@ -2,40 +2,40 @@
 
 @import 'omegags';
 
-#main {
+.main {
   @include clearfix();
 
-  #content-wrapper,
-  #postscript-wrapper {
+  .content-wrapper,
+  .postscript-wrapper {
     @include row(12);
     margin-bottom: 1em;
   }
 
-  #content {
+  .content {
 	  @include column(6);
 	  @include push(6);
   }
 
-  #sidebar_first {
+  .sidebar-first {
   	@include column(3);
   	@include pull(6);
   }
 
-  #sidebar_second {
+  .sidebar-second {
   	@include column(3);
   	@include pull(6);
   }
 
-  #postscript_first {
+  .postscript-first {
     @include column(4);
     @include push(8);
   }
 
-  #postscript_second {
+  .postscript-second {
     @include column(4);
   }
 
-  #postscript_third {
+  .postscript-third {
     @include column(4);
     @include pull(8);
   }

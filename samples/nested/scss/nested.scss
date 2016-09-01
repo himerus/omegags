@@ -1,32 +1,32 @@
 // Default grid sizing (960px)
-$cwidth:        60px;    // column width
-$gutter:        20px;    // gutter width
-$cols:          12;    // total # of cols
-$dir:           'LTR'; // LTR or RTL
-$twidth:        100%;  // uncomment to use percentage based layout
+$omegags-column-width:        60px;    // column width
+$omegags-gutter-width:        20px;    // gutter width
+$omegags-column-count:          12;    // total # of cols
+$omegags-direction:           'LTR'; // LTR or RTL
+$omegags-total-width:        100%;  // uncomment to use percentage based layout
 
 @import 'omegags';
 
-#main {
+.main {
   @include clearfix();
   min-width: 740px;
 
-  #content-wrapper,
-  #postscript-wrapper {
+  .content-wrapper,
+  .postscript-wrapper {
     @include row(12);
     margin-bottom: 1em;
   }
 
-  #content {
+  .content {
 	  @include column(6);
 
-	  #content-inner {
+	  .content-inner {
 	    @include row(6);
 	    //@include clearfix();
 	  }
 
-	  #content-top,
-	  #content-bottom {
+	  .content-top,
+	  .content-bottom {
 	    //@include column(6);
 	    //@include alpha();
 	    //@include omega();
@@ -34,44 +34,44 @@ $twidth:        100%;  // uncomment to use percentage based layout
 
 	    margin-top: 10px;
 	  }
-	  #content-left {
+	  .content-left {
   	  @include column(2,6, 'alpha');
 	    margin-top: 10px;
 	  }
-	  #content-right {
+	  .content-right {
 	    @include column(2,6, 'omega');
 	    margin-top: 10px;
 	  }
-	  #content-center {
+	  .content-center {
   	  @include column(2,6);
   	  margin-top: 10px;
 	  }
 
-	  #content-left {
+	  .content-left {
 	    //@include alpha();
 	  }
-	  #content-right {
+	  .content-right {
 	    //@include omega();
 	  }
   }
 
-  #sidebar_first {
+  .sidebar-first {
   	@include column(3);
   }
 
-  #sidebar_second {
+  .sidebar-second {
   	@include column(3);
   }
 
-  #postscript_first {
+  .postscript-first {
     @include column(4);
   }
 
-  #postscript_second {
+  .postscript-second {
     @include column(4);
   }
 
-  #postscript_third {
+  .postscript-third {
     @include column(4);
   }
 }

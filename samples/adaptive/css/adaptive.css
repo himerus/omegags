@@ -1,49 +1,49 @@
 body {
-  width: 100%;
-  min-width: 100%;
   *zoom: 1;
+  min-width: 100%;
+  width: 100%;
 }
 body:before, body:after {
-  content: "";
+  content: '';
   display: table;
 }
 body:after {
   clear: both;
 }
 
-#main {
+.main {
   *zoom: 1;
   margin: 0 auto;
 }
-#main:before, #main:after {
-  content: "";
+.main:before, .main:after {
+  content: '';
   display: table;
 }
-#main:after {
+.main:after {
   clear: both;
 }
-#main #content-wrapper,
-#main #postscript-wrapper {
+.main .content-wrapper,
+.main .postscript-wrapper {
   display: block;
   margin: 0 auto;
   width: 100%;
   *zoom: 1;
   margin-bottom: 1em;
 }
-#main #content-wrapper:before, #main #content-wrapper:after,
-#main #postscript-wrapper:before,
-#main #postscript-wrapper:after {
-  content: "";
+.main .content-wrapper:before, .main .content-wrapper:after,
+.main .postscript-wrapper:before,
+.main .postscript-wrapper:after {
+  content: '';
   display: table;
 }
-#main #content-wrapper:after,
-#main #postscript-wrapper:after {
+.main .content-wrapper:after,
+.main .postscript-wrapper:after {
   clear: both;
 }
-#main #content,
-#main #sidebar_first,
-#main #sidebar_second,
-#main #postscript_first {
+.main .content,
+.main .sidebar-first,
+.main .sidebar-second,
+.main .postscript-first {
   display: block;
   position: relative;
   clear: none;
@@ -53,7 +53,7 @@ body:after {
   float: left;
   margin-bottom: 1em;
 }
-#main #content {
+.main .content {
   display: block;
   position: relative;
   clear: none;
@@ -63,8 +63,8 @@ body:after {
   float: left;
   margin-bottom: 1em;
 }
-#main #postscript_second,
-#main #postscript_third {
+.main .postscript-second,
+.main .postscript-third {
   display: block;
   position: relative;
   clear: none;
@@ -76,25 +76,25 @@ body:after {
 
 @media all and (min-width: 480px) and (max-width: 719px) {
   /* (480px) */
-  #main #content-wrapper,
-  #main #postscript-wrapper {
+  .main .content-wrapper,
+  .main .postscript-wrapper {
     display: block;
     margin: 0 auto;
     width: 100%;
     *zoom: 1;
     margin-bottom: 1em;
   }
-  #main #content-wrapper:before, #main #content-wrapper:after,
-  #main #postscript-wrapper:before,
-  #main #postscript-wrapper:after {
-    content: "";
+  .main .content-wrapper:before, .main .content-wrapper:after,
+  .main .postscript-wrapper:before,
+  .main .postscript-wrapper:after {
+    content: '';
     display: table;
   }
-  #main #content-wrapper:after,
-  #main #postscript-wrapper:after {
+  .main .content-wrapper:after,
+  .main .postscript-wrapper:after {
     clear: both;
   }
-  #main #content {
+  .main .content {
     display: block;
     position: relative;
     clear: none;
@@ -104,7 +104,7 @@ body:after {
     float: left;
     margin-bottom: 1em;
   }
-  #main #sidebar_first {
+  .main .sidebar-first {
     display: block;
     position: relative;
     clear: none;
@@ -115,7 +115,7 @@ body:after {
     left: 25%;
     right: auto;
   }
-  #main #sidebar_second {
+  .main .sidebar-second {
     display: block;
     position: relative;
     clear: none;
@@ -129,25 +129,25 @@ body:after {
 }
 @media all and (min-width: 720px) and (max-width: 959px) {
   /* (720px) */
-  #main #content-wrapper,
-  #main #postscript-wrapper {
+  .main .content-wrapper,
+  .main .postscript-wrapper {
     display: block;
     margin: 0 auto;
     width: 100%;
     *zoom: 1;
     margin-bottom: 1em;
   }
-  #main #content-wrapper:before, #main #content-wrapper:after,
-  #main #postscript-wrapper:before,
-  #main #postscript-wrapper:after {
-    content: "";
+  .main .content-wrapper:before, .main .content-wrapper:after,
+  .main .postscript-wrapper:before,
+  .main .postscript-wrapper:after {
+    content: '';
     display: table;
   }
-  #main #content-wrapper:after,
-  #main #postscript-wrapper:after {
+  .main .content-wrapper:after,
+  .main .postscript-wrapper:after {
     clear: both;
   }
-  #main #content {
+  .main .content {
     display: block;
     position: relative;
     clear: none;
@@ -157,7 +157,7 @@ body:after {
     float: left;
     margin-bottom: 1em;
   }
-  #main #sidebar_first {
+  .main .sidebar-first {
     display: block;
     position: relative;
     clear: none;
@@ -166,7 +166,7 @@ body:after {
     margin-left: 1.04167%;
     float: left;
   }
-  #main #sidebar_second {
+  .main .sidebar-second {
     display: block;
     position: relative;
     clear: none;
@@ -175,9 +175,9 @@ body:after {
     margin-left: 1.04167%;
     float: left;
   }
-  #main #postscript_first,
-  #main #postscript_second,
-  #main #postscript_third {
+  .main .postscript-first,
+  .main .postscript-second,
+  .main .postscript-third {
     display: block;
     position: relative;
     clear: none;
@@ -189,25 +189,25 @@ body:after {
 }
 @media all and (min-width: 960px) and (max-width: 1199px) {
   /* (960px) */
-  #main #content-wrapper,
-  #main #postscript-wrapper {
+  .main .content-wrapper,
+  .main .postscript-wrapper {
     display: block;
     margin: 0 auto;
     width: 100%;
     *zoom: 1;
     margin-bottom: 1em;
   }
-  #main #content-wrapper:before, #main #content-wrapper:after,
-  #main #postscript-wrapper:before,
-  #main #postscript-wrapper:after {
-    content: "";
+  .main .content-wrapper:before, .main .content-wrapper:after,
+  .main .postscript-wrapper:before,
+  .main .postscript-wrapper:after {
+    content: '';
     display: table;
   }
-  #main #content-wrapper:after,
-  #main #postscript-wrapper:after {
+  .main .content-wrapper:after,
+  .main .postscript-wrapper:after {
     clear: both;
   }
-  #main #content {
+  .main .content {
     display: block;
     position: relative;
     clear: none;
@@ -218,7 +218,7 @@ body:after {
     left: 50%;
     right: auto;
   }
-  #main #sidebar_first {
+  .main .sidebar-first {
     display: block;
     position: relative;
     clear: none;
@@ -229,7 +229,7 @@ body:after {
     right: 50%;
     left: auto;
   }
-  #main #sidebar_second {
+  .main .sidebar-second {
     display: block;
     position: relative;
     clear: none;
@@ -240,7 +240,7 @@ body:after {
     right: 50%;
     left: auto;
   }
-  #main #postscript_first {
+  .main .postscript-first {
     display: block;
     position: relative;
     clear: none;
@@ -249,7 +249,7 @@ body:after {
     margin-left: 1.04167%;
     float: left;
   }
-  #main #postscript_second {
+  .main .postscript-second {
     display: block;
     position: relative;
     clear: none;
@@ -258,7 +258,7 @@ body:after {
     margin-left: 1.04167%;
     float: left;
   }
-  #main #postscript_third {
+  .main .postscript-third {
     display: block;
     position: relative;
     clear: none;
@@ -270,25 +270,25 @@ body:after {
 }
 @media all and (min-width: 1200px) {
   /* (1200px) */
-  #main #content-wrapper,
-  #main #postscript-wrapper {
+  .main .content-wrapper,
+  .main .postscript-wrapper {
     display: block;
     margin: 0 auto;
     width: 100%;
     *zoom: 1;
     margin-bottom: 1em;
   }
-  #main #content-wrapper:before, #main #content-wrapper:after,
-  #main #postscript-wrapper:before,
-  #main #postscript-wrapper:after {
-    content: "";
+  .main .content-wrapper:before, .main .content-wrapper:after,
+  .main .postscript-wrapper:before,
+  .main .postscript-wrapper:after {
+    content: '';
     display: table;
   }
-  #main #content-wrapper:after,
-  #main #postscript-wrapper:after {
+  .main .content-wrapper:after,
+  .main .postscript-wrapper:after {
     clear: both;
   }
-  #main #content {
+  .main .content {
     display: block;
     position: relative;
     clear: none;
@@ -299,7 +299,7 @@ body:after {
     left: 25%;
     right: auto;
   }
-  #main #sidebar_first {
+  .main .sidebar-first {
     display: block;
     position: relative;
     clear: none;
@@ -310,7 +310,7 @@ body:after {
     right: 50%;
     left: auto;
   }
-  #main #sidebar_second {
+  .main .sidebar-second {
     display: block;
     position: relative;
     clear: none;
@@ -319,7 +319,7 @@ body:after {
     margin-left: 1.04167%;
     float: left;
   }
-  #main #postscript_first {
+  .main .postscript-first {
     display: block;
     position: relative;
     clear: none;
@@ -328,7 +328,7 @@ body:after {
     margin-left: 1.04167%;
     float: left;
   }
-  #main #postscript_second {
+  .main .postscript-second {
     display: block;
     position: relative;
     clear: none;
@@ -337,7 +337,7 @@ body:after {
     margin-left: 1.04167%;
     float: left;
   }
-  #main #postscript_third {
+  .main .postscript-third {
     display: block;
     position: relative;
     clear: none;
@@ -347,3 +347,5 @@ body:after {
     float: left;
   }
 }
+
+/*# sourceMappingURL=adaptive.css.map */

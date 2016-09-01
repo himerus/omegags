@@ -2,20 +2,20 @@
  * SAMPLE GRID SIZES ###########################
  * Use these, or your own calculations for a fixed width grid.
  * 1200px Grid =========
- *   $cwidth: 80; $gutter: 20; $cols: 12; 
- *   $cwidth: 55; $gutter: 20; $cols: 16;
+ *   $omegags-column-width: 80; $omegags-gutter-width: 20; $omegags-column-count: 12;
+ *   $omegags-column-width: 55; $omegags-gutter-width: 20; $omegags-column-count: 16;
  *
  * 960px Grid =========
- *   $cwidth: 60; $gutter: 20; $cols: 12; 
- *   $cwidth: 40; $gutter: 20; $cols: 16;
+ *   $omegags-column-width: 60; $omegags-gutter-width: 20; $omegags-column-count: 12;
+ *   $omegags-column-width: 40; $omegags-gutter-width: 20; $omegags-column-count: 16;
  * Fluid Grid =========
- *   $cwidth: 60; $gutter: 20; $cols: 12; 
- *   $cwidth: 40; $gutter: 20; $cols: 16;
+ *   $omegags-column-width: 60; $omegags-gutter-width: 20; $omegags-column-count: 12;
+ *   $omegags-column-width: 40; $omegags-gutter-width: 20; $omegags-column-count: 16;
  */
-/* Utility function to simplify math used in mixins 
+/* Utility function to simplify math used in mixins
  * Will convert (when needed) widths to a percentage
  */
-/* Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. 
+/* Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7.
  * See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
  */
 body {
@@ -37,8 +37,8 @@ body:after {
  *  in the full layout.
  *  This only becomes apparent in fluid and nested layouts
  */
-/* While in a standard, fixed-width grid, it's easy to remove margins for nested grids, in a fluid layout it 
-	 * poses a small problem when determining the full width of the elements. 
+/* While in a standard, fixed-width grid, it's easy to remove margins for nested grids, in a fluid layout it
+	 * poses a small problem when determining the full width of the elements.
 	 * For now, we assume that we should take that margin we are removing and put it on the other margin
 	 * This could however, be added to the width of the element instead, but that could cause "quirks" as well depending
 	 * on design.
@@ -47,18 +47,18 @@ body:after {
    */
 /* Content First push/pull effects */
 /* Prefix/Suffix add padding to the left/right of an element to widen the gutter and additional column space */
-#main {
+.main {
   *zoom: 1;
 }
-#main:before, #main:after {
+.main:before, .main:after {
   content: "";
   display: table;
 }
-#main:after {
+.main:after {
   clear: both;
 }
-#main #content-wrapper,
-#main #postscript-wrapper {
+.main .content-wrapper,
+.main .postscript-wrapper {
   display: block;
   margin: 0 auto;
   /* default row width */
@@ -70,17 +70,17 @@ body:after {
   *zoom: 1;
   margin-bottom: 1em;
 }
-#main #content-wrapper:before, #main #content-wrapper:after,
-#main #postscript-wrapper:before,
-#main #postscript-wrapper:after {
+.main .content-wrapper:before, .main .content-wrapper:after,
+.main .postscript-wrapper:before,
+.main .postscript-wrapper:after {
   content: "";
   display: table;
 }
-#main #content-wrapper:after,
-#main #postscript-wrapper:after {
+.main .content-wrapper:after,
+.main .postscript-wrapper:after {
   clear: both;
 }
-#main #content {
+.main .content {
   display: block;
   position: relative;
   /* default width & margin values */
@@ -92,7 +92,7 @@ body:after {
   /* RTL/LTR switching */
   float: left;
 }
-#main #sidebar_first {
+.main .sidebar-first {
   display: block;
   position: relative;
   /* default width & margin values */
@@ -104,7 +104,7 @@ body:after {
   /* RTL/LTR switching */
   float: left;
 }
-#main #sidebar_second {
+.main .sidebar-second {
   display: block;
   position: relative;
   /* default width & margin values */
@@ -116,7 +116,7 @@ body:after {
   /* RTL/LTR switching */
   float: left;
 }
-#main #postscript_first {
+.main .postscript-first {
   display: block;
   position: relative;
   /* default width & margin values */
@@ -128,7 +128,7 @@ body:after {
   /* RTL/LTR switching */
   float: left;
 }
-#main #postscript_second {
+.main .postscript-second {
   display: block;
   position: relative;
   /* default width & margin values */
@@ -142,7 +142,7 @@ body:after {
   margin-left: 90px;
   margin-right: 90px;
 }
-#main #postscript_third {
+.main .postscript-third {
   display: block;
   position: relative;
   /* default width & margin values */
