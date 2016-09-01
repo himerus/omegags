@@ -1,2 +1,20 @@
 .idea
 .sass-cache
+*.DS_Store
+bower_components/
+node_modules/
+Gemfile.lock
+*.css.map
+
+# Exclude IDE management files.
+# Eclipse
+.project
+.settings
+.buildpath
+# Netbeans
+netbeans
+nbproject
+# Komodo
+*.kpf
+# PHPStorm
+.idea

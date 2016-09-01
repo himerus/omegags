@@ -1,0 +1,25 @@
+{
+  "name": "omegags",
+  "version": "1.0.0",
+  "license": "GPL-2.0",
+  "description": "Omega.gs is a responsive, flexible grid framework.",
+  "homepage": "https://github.com/himerus/omegags",
+  "bugs": {
+    "url": "https://github.com/himerus/omegags/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/himerus/omegags.git"
+  },
+  "author": "Jake Strawn (https://github.com/himerus)",
+  "main": "style/scss/_omegags.scss",
+  "keywords": [
+    "layout",
+    "grid",
+    "sass",
+    "responsive",
+    "rwd",
+    "semantic",
+    "eyeglass-module"
+  ]
+}
