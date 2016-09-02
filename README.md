@@ -1,5 +1,7 @@
 # Omega.gs
+[![Build Status](https://travis-ci.org/himerus/omegags.svg?branch=2.x)](https://travis-ci.org/himerus/omegags)
 [![Dependency Status](https://dependencyci.com/github/himerus/omegags/badge)](https://dependencyci.com/github/himerus/omegags)
+
 ##### A simple grid for complicated times.
 Omega.gs is a responsive, flexible grid framework.
 Primary usage of Omega.gs is implemented by the [Omega](https://drupal.org/project/omega) Drupal theme. 
