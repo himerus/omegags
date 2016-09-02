@@ -3,12 +3,7 @@
 sudo: false
 language: node_js
 node_js:
-  - "6"
-  - "6.1"
-  - "5.11"
-  - "0.6"
-  - "0.12"
-  - "iojs"
+  - "0.10"
 script: npm install
 
 # Eyeglass requires this to install on Node.js under Travis.
